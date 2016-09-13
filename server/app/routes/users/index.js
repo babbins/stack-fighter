@@ -2,14 +2,13 @@ var express = require('express');
 var router  = express.Router();
 var db = require('../../../db');
 
-// var User = require('../../../db/models/user.js');
-var User = db.model('user');
+var User = require('../../../db/models/user.js');
+// var User = db.model('user');
 
 module.exports = router;
 
 //Get all the users
-router.get('/users', function(req, res, next){
-    // res.send("HEYYYYYYYYYYYY");
+router.get('/', function(req, res, next){
     User.findAll()
     .then(function(allUsers){
         console.log(allUsers);
@@ -19,7 +18,7 @@ router.get('/users', function(req, res, next){
 })
 
 // Get by ID
-router.get('/users/:id', function(req, res, next){
+router.get('/:id', function(req, res, next){
     User.findOne({
         where: {
             id: req.params.id
@@ -29,14 +28,14 @@ router.get('/users/:id', function(req, res, next){
         if(oneUser === null){
             res.status(404);
         }
-        res.json(oneBook);
+        res.json(oneUser);
     })
     .catch(next);
 })
 
 
 // Post
-router.post('/users', function(req, res, next){
+router.post('/', function(req, res, next){
     User.create(req.body)
     .then(function(createdUser){
         res.status(201);
@@ -47,7 +46,7 @@ router.post('/users', function(req, res, next){
 
 
 // Put. User or admin updating their info
-router.put('/users/:id', function(req, res, next){
+router.put('/:id', function(req, res, next){
     User.findOne({
         where: {
             id: req.params.id
@@ -69,7 +68,7 @@ router.put('/users/:id', function(req, res, next){
 
 
 // Delete
-router.delete('/users/:id', function(req, res, next){
+router.delete('/:id', function(req, res, next){
     User.findOne({
         where: {
             id: req.params.id
