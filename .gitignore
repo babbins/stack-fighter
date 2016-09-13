@@ -4,5 +4,6 @@ npm-debug.log
 public
 .DS_Store
 coverage
-jsconfig.json
 typings
+jsconfig.json
+
