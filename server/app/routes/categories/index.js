@@ -2,8 +2,7 @@
 
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
-var models = require('../../../db/models');
-var Category = models.Category;
+var Category = require('../../../db/models/category');
 
 //Get all Categories with a given type. Eg: Every value (eg: SFII,SFIII,SIV) of a given type (eg: Game);
 router.get('/', function(req, res, next){
@@ -20,15 +19,17 @@ router.post('/', function(req, res, next){
 });
 
 //Updating a category.
-router.put('/:categoryId', function(req, res, next){
-    req.category.update(req.body)
+router.put('/:id', function(req, res, next){
+    Category.findById(req.params.id)
+    .then(updatingCategory => updatingCategory.update(req.body))
     .then(updatedCategory => res.status(200).json(updatedCategory))
     .catch(next);
 });
 
 //Deleting a category.
-router.delete('/:categoryId', function(req, res, next){
-    req.category.destroy()
-    .then(() => res.status(204).end())
+router.delete('/:id', function(req, res, next){
+    Category.findById(req.params.id)
+    .then(deletingCategory => deletingCategory.destroy())
+    .then(deletedCategory => res.status(204).end())
     .catch(next);
 });
