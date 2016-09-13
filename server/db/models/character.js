@@ -9,7 +9,7 @@ module.exports = db.define('character', {
   //url to image
   portrait: {
     type: Sequelize.STRING
-    //TODO: defaultValue: urlForPlaceHOlder
+    //defaultValue: urlForPlaceHOlder
   },
   description: {
     type: Sequelize.TEXT
