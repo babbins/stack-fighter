@@ -8,5 +8,3 @@ var Order = require('./models/order')
 
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
-
-Order.belongsToMany(Character, { through: OrderCharacters})
