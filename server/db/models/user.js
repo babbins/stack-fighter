@@ -42,6 +42,10 @@ module.exports = db.define('user', {
     },
     phone: {
         type: Sequelize.STRING,
+    },
+    isAdmin: {
+        type: Sequelize.BOOLEAN,
+        allowNull: false
     }
 }, {
     instanceMethods: {
