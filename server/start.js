@@ -11,6 +11,5 @@
  start your application from main.js.
 
 */
-
 require('babel-register');
 require('./main');
