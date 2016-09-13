@@ -2,8 +2,7 @@ var express = require('express');
 var router  = express.Router();
 
 var User = require('../../../db/models/user.js');
-var User = db.model('user');
-//****^^^*****//WHICH ONE?
+// var User = db.model('user');
 
 module.exports = router;
 
@@ -56,10 +55,7 @@ router.put('/users/:id', function(req, res, next){
             res.status(404);
             res.send();
         } else {
-            userToBeUpdated.update({
-                name:
-                phone: //NOT SURE WHAT TO UPDATE YET...
-            })
+            userToBeUpdated.update(req.body)
             .then(function(successfulUpdate){
                 res.send(successfulUpdate)
             })
