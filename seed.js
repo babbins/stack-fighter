@@ -1,8 +1,8 @@
 var Promise = require('bluebird');
-var db = require('./_db');
-var Character = require('./models/character');
-var Category = require('./models/category');
-var User = require('./models/user');
+var db = require('./server/db/_db');
+var Character = require('./server/db/models/character');
+var Category = require('./server/db/models/category');
+var User = require('./server/db/models/user');
 
 var data = {
     character:
