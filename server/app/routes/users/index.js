@@ -1,15 +1,18 @@
 var express = require('express');
 var router  = express.Router();
+var db = require('../../../db');
 
-var User = require('../../../db/models/user.js');
-// var User = db.model('user');
+// var User = require('../../../db/models/user.js');
+var User = db.model('user');
 
 module.exports = router;
 
 //Get all the users
 router.get('/users', function(req, res, next){
+    // res.send("HEYYYYYYYYYYYY");
     User.findAll()
     .then(function(allUsers){
+        console.log(allUsers);
         res.json(allUsers);
     })
     .catch(next);
