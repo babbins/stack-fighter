@@ -7,3 +7,5 @@ var User = require('./models/user');
 
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
+
+Review.belongsTo(User);
