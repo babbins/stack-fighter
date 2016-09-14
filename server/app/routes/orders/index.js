@@ -26,14 +26,20 @@ router.put('/:id', function(req, res, next){
   })
   .then(order => res.status(200).send(order))
   .catch(next);
-})
+});
 
 router.get('/:id', function(req, res, next){
   Order.findById(req.params.id)
   .then(order => res.send(order))
   .catch(next);
-})
+});
 
+router.delete('/:id', function(req, res, next){
+  Order.findById(req.params.id)
+  .then(order => order.destroy())
+  .then(() => res.status(200).send('Order deleted'))
+  .catch(next);
+});
 router.get('/user/:userId', function(req, res, next){
   Order.findAll({where: { userId: req.params.userId}})
   .then(orders => res.send(orders))
