@@ -4,15 +4,13 @@
     <div class="col-xs-4 col-xs-offset-4">
       <h1> Character Select </h1>
       <img src="http://www.zweifuss.ca/alex/alexstance.gif" alt="">
-      Stats
-      Stats
-      Stats
+      Test: {{test}}
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
-      <div ng-repeat="character in characters">
-        <div class="col-xs-3">
+    <div class="col-xs-11 col-xs-offset-1">
+      <div class="charSelect" ng-repeat="character in characters">
+        <div class="col-xs-2" ng>
           <img ng-src="{{character.portrait}}">
         </div>
       </div>
