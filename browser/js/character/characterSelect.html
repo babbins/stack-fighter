@@ -1,7 +1,27 @@
-<h1> Character Select </h1>
 
-<div ng-repeat="character in characters">
+<div class="container" id="characterSelected">
+  <div class="row">
+    <div class="col-xs-4 col-xs-offset-4">
+      <h1> Character Select </h1>
+      <img src="http://www.zweifuss.ca/alex/alexstance.gif" alt="">
+      Stats
+      Stats
+      Stats
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-xs-10 col-xs-offset-1">
+      <div ng-repeat="character in characters">
+        <div class="col-xs-3">
+          <img ng-src="{{character.portrait}}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--<div ng-repeat="character in characters">
   <h3>{{character.name}}</h3>
   <h4>{{character.price}}</h4>
   <img ng-src="{{character.portrait}}">
-</div>
+</div>-->
