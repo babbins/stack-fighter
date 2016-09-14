@@ -7,16 +7,16 @@ var User = require('./server/db/models/user');
 var data = {
     character:
     [
-        {name:  'Ryu', portrait: 'http://imgur.com/AhIHGg7',  price:  '500.00',  strength: '7',  intelligence: '6',  speed: '7',  luck:  '6'},
-        {name:  'Chun-Li', portrait: 'http://imgur.com/xoQ21Fa',  price:  '500.00',  strength: '6',  intelligence: '5',  speed: '8',  luck:  '5'},
-        {name:  'Sagat', portrait:  'http://imgur.com/9C17Piq', price:  '500.00',  strength: '6',  intelligence: '5',  speed: '8',  luck:  '5'},
-        {name:  'Vega', portrait:  'http://imgur.com/PtwyC5S', price:  '500.00',  strength: '3',  intelligence: '5',  speed: '9',  luck:  '3'},
-        {name:  'Balrog', portrait:  'http://imgur.com/Htn0TEx', price:  '500.00',  strength: '8',  intelligence: '3',  speed: '8',  luck:  '6'},
-        {name:  'Guile', portrait:  'http://imgur.com/jDKVlai', price:  '500.00',  strength: '7',  intelligence: '4',  speed: '8',  luck:  '6'},
-        {name:  'Akuma', portrait: 'http://imgur.com/NHOmUpU', price: '1000.00', strength: '10', intelligence: '10', speed: '10', luck: '2'},
-        {name:  'Blanka', portrait: 'http://imgur.com/Z46SkfV', price: '1000.00', strength: '8', intelligence: '2', speed: '9', luck: '6'},
-        {name:  'Bison', portrait: 'http://imgur.com/hGZqK5C', price: '1000.00', strength: '8', intelligence: '8', speed: '4', luck: '4'},
-        {name:  'Zangief', portrait: 'http://imgur.com/Jal26u4', price: '1000.00', strength: '10', intelligence: '3', speed: '5', luck: '5'}
+        {name:  'Ryu', portrait: 'http://i.imgur.com/AhIHGg7.gif',  price:  '500.00',  strength: '7',  intelligence: '6',  speed: '7',  luck:  '6'},
+        {name:  'Chun-Li', portrait: 'http://i.imgur.com/xoQ21Fa.gif',  price:  '500.00',  strength: '6',  intelligence: '5',  speed: '8',  luck:  '5'},
+        {name:  'Sagat', portrait:  'http://i.imgur.com/9C17Piq.gif', price:  '500.00',  strength: '6',  intelligence: '5',  speed: '8',  luck:  '5'},
+        {name:  'Vega', portrait:  'http://i.imgur.com/PtwyC5S.gif', price:  '500.00',  strength: '3',  intelligence: '5',  speed: '9',  luck:  '3'},
+        {name:  'Balrog', portrait:  'http://i.imgur.com/Htn0TEx.gif', price:  '500.00',  strength: '8',  intelligence: '3',  speed: '8',  luck:  '6'},
+        {name:  'Guile', portrait:  'http://i.imgur.com/jDKVlai.gif', price:  '500.00',  strength: '7',  intelligence: '4',  speed: '8',  luck:  '6'},
+        {name:  'Akuma', portrait: 'http://i.imgur.com/NHOmUpU.gif', price: '1000.00', strength: '10', intelligence: '10', speed: '10', luck: '2'},
+        {name:  'Blanka', portrait: 'http://i.imgur.com/Z46SkfV.gif', price: '1000.00', strength: '8', intelligence: '2', speed: '9', luck: '6'},
+        {name:  'Bison', portrait: 'http://i.imgur.com/hGZqK5C.gif', price: '1000.00', strength: '8', intelligence: '8', speed: '4', luck: '4'},
+        {name:  'Zangief', portrait: 'http://i.imgur.com/Jal26u4.gif', price: '1000.00', strength: '10', intelligence: '3', speed: '5', luck: '5'}
     ],
     category:
     [
