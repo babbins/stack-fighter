@@ -2,7 +2,7 @@
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 
-var Order = require('../../db/models/order.js');
+var Order = require('../../../db/models/order.js');
 
 
 // '/orders'
@@ -22,9 +22,10 @@ router.post('/', function(req, res, next){
 router.put('/:id', function(req, res, next){
   Order.findById(req.params.id)
   .then(order => {
-    return order.update(req.body)
+    return order.update(req.body);
   })
-  .then(order => res.status(200).send(order));
+  .then(order => res.status(200).send(order))
+  .catch(next);
 })
 
 router.get('/:id', function(req, res, next){
