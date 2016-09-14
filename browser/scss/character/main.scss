@@ -1,6 +1,29 @@
-.charSelect .col-xs-2 {
-  margin: 5px 5px 5px 5px;
+.charSelect {
+
+  @include clearfix;
+  float: left;
+  margin: 20px;
+  border: 1px solid transparent;
   &:hover {
-    border:1px solid red;
+      border:1px solid red;
+    }
+
+  img {
+    display: block;
+    width: 100%;
+    height: 100%;
   }
+
+} 
+
+.SelectTitle{
+  text-align: center;
+}
+
+#portrait {
+  display: block;
+}
+
+#Stats {
+  display: block;
 }

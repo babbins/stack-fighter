@@ -1,16 +1,27 @@
 
 <div class="container" id="characterSelected">
+  <h1 class="SelectTitle"> SELECT YOUR CHARACTER </h1>
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
-      <h1> Character Select </h1>
-      <img src="http://www.zweifuss.ca/alex/alexstance.gif" alt="">
-      Test: {{test}}
+      <h4>{{selectedCharacter.name}}</h4>
+      <h6>Price: ${{selectedCharacter.price}} </h6>
+      <div class="col-xs-8">
+      <img id="portrait" ng-src="{{selectedCharacter.portrait}}" alt="">
+      </div>
+      <div class="col-xs-4">
+      <ul id="Stats">
+        <li>Strength: {{selectedCharacter.strength}}</li>
+        <li>Speed: {{selectedCharacter.speed}}</li>
+        <li>Intelligence: {{selectedCharacter.intelligence}}</li>
+        <li>Luck: {{selectedCharacter.luck}}</li>
+      </ul>
+      </div>
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-11 col-xs-offset-1">
-      <div class="charSelect" ng-repeat="character in characters">
-        <div class="col-xs-2" ng>
+    <div class="col-xs-10 col-xs-offset-1">
+      <div class="charSelect row" ng-repeat="character in characters">
+        <div ng-click='selectCharacter(character)'>
           <img ng-src="{{character.portrait}}">
         </div>
       </div>
