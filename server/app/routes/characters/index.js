@@ -5,37 +5,33 @@ module.exports = router;
 var Character = require('../../../db/models/character')
 
 router.get('/', function(req, res, next){
-  Character.findAll().then(function(foundCharacters){
-    res.send(foundCharacters)
-  }).catch(next)
+  Character.findAll()
+  .then(foundCharacters => res.send(foundCharacters))
+  .catch(next)
 })
 
 router.get('/:id', function(req, res, next){
-  Character.findById(req.params.id).then(function(foundCharacter){
-    res.send(foundCharacter)
-  }).catch(next)
+  Character.findById(req.params.id)
+  .then(foundCharacter => res.send(foundCharacter))
+  .catch(next)
 })
 
 router.post('/', function(req, res, next){
-  Character.create(req.body).then(function(createdCharacter){
-    res.send(createdCharacter)
-  }).catch(next)
+  Character.create(req.body)
+  .then(createdCharacter => res.send(createdCharacter))
+  .catch(next)
 })
 
 router.put('/:id', function(req, res, next){
-  Character.findById(req.params.id).then(function(foundCharacter){
-    return foundCharacter.update(req.body)
-  }).then(function(updatedCharacter){
-    res.send(updatedCharacter)
-  })
+  Character.findById(req.params.id)
+  .then(foundCharacter => foundCharacter.update(req.body))
+  .then(updatedCharacter => res.send(updatedCharacter))
   .catch(next)
 })
 
 router.delete('/:id', function(req, res, next){
-  Character.findById(req.params.id).then(function(foundCharacter){
-    return foundCharacter.destroy(req.body)
-  }).then(function(){
-    res.send('destroyed')
-  })
+  Character.findById(req.params.id)
+  .then(foundCharacter => foundCharacter.destroy(req.body))
+  .then(() => res.send('destroyed'))
   .catch(next)
 })
