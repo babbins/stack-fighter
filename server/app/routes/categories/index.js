@@ -11,6 +11,13 @@ router.get('/', function(req, res, next){
     .catch(next);
 });
 
+//Get single category.
+router.get('/:id', function(req, res, next){
+    Category.findById(req.params.id)
+    .then(gettingCategory => res.json(gettingCategory))
+    .catch(next);
+});
+
 //Creating a new category.
 router.post('/', function(req, res, next){
     Category.create(req.body)
