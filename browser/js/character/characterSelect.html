@@ -4,6 +4,9 @@
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <h4>{{selectedCharacter.name}}</h4>
+      <a ui-sref="characterDetail({id: selectedCharacter.id})">
+        Character Detail
+      </a>
       <h6>Price: ${{selectedCharacter.price}} </h6>
       <div class="col-xs-8">
       <img id="portrait" ng-src="{{selectedCharacter.portrait}}" alt="">
@@ -29,8 +32,3 @@
   </div>
 </div>
 
-<!--<div ng-repeat="character in characters">
-  <h3>{{character.name}}</h3>
-  <h4>{{character.price}}</h4>
-  <img ng-src="{{character.portrait}}">
-</div>-->

@@ -1,5 +1,4 @@
 app.controller('CharacterSelectCtrl', function($scope, characters){
-  
   $scope.characters = characters;
 
   $scope.selectedCharacter = characters[0];
