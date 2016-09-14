@@ -19,9 +19,9 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-xs-10 col-xs-offset-1">
+    <div class="col-xs-12">
       <div class="charSelect row" ng-repeat="character in characters">
-        <div ng-click='selectCharacter(character)'>
+        <div ng-mouseover='selectCharacter(character)' ng-click='characterDetail(character)'>
           <img ng-src="{{character.portrait}}">
         </div>
       </div>
