@@ -12,6 +12,9 @@ module.exports = db.define('character', {
     type: Sequelize.STRING
     //defaultValue: urlForPlaceHOlder
   },
+  idleSprite: {
+    type: Sequelize.STRING
+  }, 
   description: {
     type: Sequelize.TEXT
   },
