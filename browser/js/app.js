@@ -12,6 +12,11 @@ app.config(function ($urlRouterProvider, $locationProvider) {
     });
 });
 
+app.run(function ($rootScope){
+  $rootScope.$on('$stateChangeError', function(){
+    console.log(arguments[5]);
+  });
+});
 // This app.run is for controlling access to specific states.
 app.run(function ($rootScope, AuthService, $state) {
 
