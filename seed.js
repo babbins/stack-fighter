@@ -8,7 +8,7 @@ var data = {
     character:
     [
         {name:  'Ryu', portrait: 'http://i.imgur.com/iITFQiW.gif',  price:  '500.00',  strength: '7',  intelligence: '6',  speed: '7',  luck:  '6'},
-        {name:  'Chun-Li', portrait: 'http://i.imgur.com/L46gV15',  price:  '500.00',  strength: '6',  intelligence: '5',  speed: '8',  luck:  '5'},
+        {name:  'Chun-Li', portrait: 'http://i.imgur.com/L46gV15.gif',  price:  '500.00',  strength: '6',  intelligence: '5',  speed: '8',  luck:  '5'},
         {name:  'Sagat', portrait:  'http://i.imgur.com/DFySye9.gif', price:  '500.00',  strength: '6',  intelligence: '5',  speed: '8',  luck:  '5'},
         {name:  'Vega', portrait:  'http://i.imgur.com/PesE1pk.gif', price:  '500.00',  strength: '3',  intelligence: '5',  speed: '9',  luck:  '3'},
         {name:  'Balrog', portrait:  'http://i.imgur.com/K0TCjKL.gif', price:  '500.00',  strength: '8',  intelligence: '3',  speed: '8',  luck:  '6'},
