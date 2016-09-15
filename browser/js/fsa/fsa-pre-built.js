@@ -49,6 +49,7 @@
     });
 
     app.service('AuthService', function ($http, Session, $rootScope, AUTH_EVENTS, $q) {
+        var self = this;
 
         function onSuccessfulLogin(response) {
             var user = response.data.user;
@@ -100,6 +101,16 @@
                 $rootScope.$broadcast(AUTH_EVENTS.logoutSuccess);
             });
         };
+
+        this.signup = function(credentials) {
+          return $http.post('/api/users', credentials)
+          .then(function(){
+            return self.login({email: credentials.email, password: credentials.password});
+          })
+          .catch(function () {
+              return $q.reject({ message: 'Invalid login credentials.' });
+          });
+        }
 
     });
 
