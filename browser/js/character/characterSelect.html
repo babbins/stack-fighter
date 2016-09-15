@@ -44,7 +44,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="charSelect row" ng-repeat="character in characters">
-        <div ng-mouseover='selectCharacter(character)' ng-click='characterDetail(character)'>
+        <div ng-mouseover='selectCharacter(character)'
+             ui-sref="characterDetail({id: character.id})">
           <img ng-src="{{character.portrait}}">
         </div>
       </div>
@@ -52,9 +53,3 @@
   </div>
 </div>
 </row>
-
-<!--<div ng-repeat="character in characters">
-  <h3>{{character.name}}</h3>
-  <h4>{{character.price}}</h4>
-  <img ng-src="{{character.portrait}}">
-</div>-->

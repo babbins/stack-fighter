@@ -3,8 +3,8 @@ app.config(function ($stateProvider){
     url: '/character-select',
     templateUrl: 'js/character/characterSelect.html',
     resolve: {
-      characters: function($http){
-        return $http.get('/api/characters').then(res => res.data);
+      characters: function(characterFactory){
+        return characterFactory.getAll()
       }
     },
     controller: 'CharacterSelectCtrl'
