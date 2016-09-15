@@ -2,6 +2,7 @@
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var Review = require('../../../db/models/review')
+var User = require('../../../db/models/user')
 router.post('/', function(req, res, next){
   Review.create(req.body)
   .then(createdReview => res.send(createdReview))
@@ -22,7 +23,7 @@ router.delete('/:id', function(req, res, next) {
   .catch(next)
 })
 
-router.get('/?', function(req, res, next) {
+router.get('/', function(req, res, next) {
   if (req.query.user) {
     Review.findAll({
       where: {
@@ -35,7 +36,7 @@ router.get('/?', function(req, res, next) {
     Review.findAll({
       where: {
         characterId: req.query.character
-      }
+      },
     })
     .then(foundReviews => res.send(foundReviews))
     .catch(next)

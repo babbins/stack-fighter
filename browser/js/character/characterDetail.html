@@ -12,6 +12,9 @@
         <p>Intelligence: {{character.intelligence}}</p>
         <p>Speed: {{character.speed}}</p>
         <p>Luck: {{character.luck}}</p>
+        <div ng-repeat="category in categories">
+          <p>{{category.title}}: {{category.values.join(', ')}}</p>
+        </div>
       </div>
     </div>
   </div>
