@@ -1,22 +1,34 @@
-
 <div class="container" id="characterSelected">
   <h1 class="SelectTitle"> SELECT YOUR CHARACTER </h1>
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <h4>{{selectedCharacter.name}}</h4>
       <h6>Price: ${{selectedCharacter.price}} </h6>
-      <div class="col-xs-8">
-      <br>
-      <img id="portrait" ng-src="{{selectedCharacter.idleSprite}}" alt="">
+      <div class="col-xs-6">
+        <br>
+        <img id="portrait" ng-src="{{selectedCharacter.idleSprite}}" alt="">
       </div>
       <div class="col-xs-4">
-      <ul id="Stats">
-        <li>Strength: {{selectedCharacter.strength}}</li>
-        <li>Speed: {{selectedCharacter.speed}}</li>
-        <li>Intelligence: {{selectedCharacter.intelligence}}</li>
-        <li>Luck: {{selectedCharacter.luck}}</li>
-      </ul>
+        <ul id="Stats">
+          <li>Strength: {{selectedCharacter.strength}}</li>
+          <li>Speed: {{selectedCharacter.speed}}</li>
+          <li>Intelligence: {{selectedCharacter.intelligence}}</li>
+          <li>Luck: {{selectedCharacter.luck}}</li>
+        </ul>
       </div>
+    </div>
+  </div>
+  <div class="row pricebar">
+    <div class="col-xs-offset-5 col-xs-5">
+     <select class="selectpicker show-tick btn-default" ng-model="quantity">
+          <option>0</option>
+          <option value="1">1</option>
+          <option value="2">2</option>
+          <option value="3">3</option>
+          <option value="4">4</option>
+          <option value="5">5</option>
+        </select>
+      <button ng-click="addToCart(quantity,selectedCharacter)" type="button" class="btn btn-success" id="addToCart">Add To Cart</button>
     </div>
   </div>
   <div class="row">
