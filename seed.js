@@ -198,16 +198,10 @@ var data = {
         categoryId: 6
     }, {
         characterId: 2,
-        categoryId: 1
-    }, {
-        characterId: 2,
         categoryId: 11
     }, {
         characterId: 3,
         categoryId: 1
-    }, {
-        characterId: 3,
-        categoryId: 2
     }, {
         characterId: 3,
         categoryId: 2
@@ -232,14 +226,10 @@ var data = {
     }],
     review: [{
         rating: 5,
-        description: 'LUV DAT RYU',
-        userId: 1,
-        characterId: 1
+        description: 'LUV DAT RYU'
     }, {
         rating: 1,
-        description: 'YUCKY',
-        userId: 1,
-        characterId: 1
+        description: 'YUCKY'
     }]
 };
 
