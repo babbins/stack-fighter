@@ -3,6 +3,7 @@ var db = require('./server/db');
 var Character = require('./server/db/models/character');
 var Category = require('./server/db/models/category');
 var User = require('./server/db/models/user');
+var Review = require('./server/db/models/review')
 
 var data = {
     character: [{
@@ -228,6 +229,17 @@ var data = {
     }, {
         characterId: 3,
         categoryId: 10
+    }],
+    review: [{
+        rating: 5,
+        description: 'LUV DAT RYU',
+        userId: 1,
+        characterId: 1
+    }, {
+        rating: 1,
+        description: 'YUCKY',
+        userId: 1,
+        characterId: 1
     }]
 };
 
