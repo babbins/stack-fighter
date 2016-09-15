@@ -6,5 +6,8 @@ app.factory('characterFactory', function($http){
   charObj.getById = function(id) {
     return $http.get('/api/characters/' + id).then(res => res.data);
   }
+  charObj.getCatsById = function(id) {
+    return $http.get('/api/characters/categories/' + id).then(res => res.data);
+  }
   return charObj
 })
