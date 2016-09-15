@@ -22,7 +22,7 @@ router.delete('/:id', function(req, res, next) {
   .catch(next)
 })
 
-router.get('/?', function(req, res, next) {
+router.get('/', function(req, res, next) {
   if (req.query.user) {
     Review.findAll({
       where: {
