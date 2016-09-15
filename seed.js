@@ -88,7 +88,7 @@ var data = {
     }, {
         name: 'Bison',
         portrait: 'http://i.imgur.com/cQnA8xL.gif',
-        idleSprite: 'http://i.imgur.com/KvszK1m.gif',
+        idleSprite: 'http://i.imgur.com/RhpRdA9.gif',
         description: 'M. Bison is an archetypal villain motivated by his own self-seeking interests and lust for absolute power through world domination. He is a ruthless, arrogant and unforgiving dictator who seeks to rule the world with an iron fist whilst also being universally regarded as the greatest and most powerful martial artist of all time.',
         price: '1000.00',
         strength: '8',
