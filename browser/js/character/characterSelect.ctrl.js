@@ -6,12 +6,11 @@ app.controller('CharacterSelectCtrl', function($scope, characters, CategoryFacto
       return;
     })
     .then(function(waiting) {
-      console.log($scope.categories);
-
+      
       $scope.activeFilter = [];
 
       $scope.sortedCategories = CategoryFactory.separateTypes($scope.categories);
-
+      console.log($scope.sortedCategories);
       $scope.characters = characters;
 
       $scope.selectedCharacter = characters[0];
