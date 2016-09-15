@@ -3,12 +3,10 @@ app.factory('CartFactory', function($http) {
 
     CartFactory.getCart = function(){
         return $http.get('/api/cart')
-        .then(function(response){
-            return response.data;
-        })
-    };
+        .then(cart => cart.data);
+    }
 
     CartFactory.addToCart = function(character, quantity) {};
 
     return CartFactory;
-})
+});

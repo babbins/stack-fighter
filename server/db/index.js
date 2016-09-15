@@ -16,6 +16,7 @@ var Cart = require('./models/cart');
 // User.hasOne(Cart);
 User.belongsTo(Cart);
 
+
 //order now has FK of user ALSO: access to user.addOrder, user.setOrder, user.getOrders
 User.hasMany(Order);
 //order.getUser
