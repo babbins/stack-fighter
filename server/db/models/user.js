@@ -2,6 +2,7 @@
 var crypto = require('crypto');
 var _ = require('lodash');
 var Sequelize = require('sequelize');
+var Cart = require('./cart.js');
 
 var db = require('../_db');
 
@@ -79,6 +80,13 @@ module.exports = db.define('user', {
                 user.salt = user.Model.generateSalt();
                 user.password = user.Model.encryptPassword(user.password, user.salt);
             }
+        },
+        afterCreate: function (user) {
+            return Cart.create()
+            .then(function(cart){
+                user.cartId = cart.id;
+                return user.save();
+            })
         }
     }
 });
