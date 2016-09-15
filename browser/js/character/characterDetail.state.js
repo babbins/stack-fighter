@@ -8,6 +8,9 @@ app.config(function($stateProvider){
       },
       categories: function(characterFactory, $stateParams){
         return characterFactory.getCatsById($stateParams.id)
+      },
+      reviews: function(characterFactory, $stateParams){
+        return characterFactory.getRevsById($stateParams.id)
       }
     },
     controller: 'CharacterDetailCtrl'
