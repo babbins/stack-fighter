@@ -58,3 +58,6 @@ module.exports = db.define('character', {
     }
   }
 });
+
+
+//if you always need categories look into defaultScope -- KHWA

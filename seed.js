@@ -4,6 +4,8 @@ var Character = require('./server/db/models/character');
 var Category = require('./server/db/models/category');
 var User = require('./server/db/models/user');
 
+//orders -- KHWA
+
 var data = {
     character: [{
         name: 'Ryu',

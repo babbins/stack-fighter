@@ -15,7 +15,7 @@ app.controller('SignupCtrl', function ($scope, AuthService, $state) {
 
     $scope.sendSignup = function (signupInfo) {
 
-        $scope.error = null;
+        $scope.error = null; //look at growl messages but this is awesome@! -- KHWA
 
         AuthService.signup(signupInfo).then(function () {
             $state.go('home');

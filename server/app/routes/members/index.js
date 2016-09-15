@@ -4,7 +4,7 @@ module.exports = router;
 var _ = require('lodash');
 
 var ensureAuthenticated = function (req, res, next) {
-    if (req.isAuthenticated()) {
+    if (req.isAuthenticated()) { //this is a function passport gives you when you req.logIn (also it gives you req.user)
         next();
     } else {
         res.status(401).end();
