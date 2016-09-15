@@ -7,6 +7,8 @@ var db = require('../../../server/db');
 
 var supertest = require('supertest');
 
+//I want to see tests from each of you -- KHWA
+
 describe('Members Route', function () {
 
     var app, User;

@@ -6,7 +6,7 @@ var Category = require('../../../db/models/category');
 
 //Get all Categories with a given type. Eg: Every value (eg: SFII,SFIII,SIV) of a given type (eg: Game);
 router.get('/', function(req, res, next){
-    Category.findAll({ where: req.query })
+    Category.findAll({ where: req.query }) //use this elsewhere -- consistency :)
     .then(gettingCategories => res.json(gettingCategories))
     .catch(next);
 });
@@ -29,7 +29,7 @@ router.post('/', function(req, res, next){
 router.put('/:id', function(req, res, next){
     Category.findById(req.params.id)
     .then(updatingCategory => updatingCategory.update(req.body))
-    .then(updatedCategory => res.status(200).json(updatedCategory))
+    .then(updatedCategory => res.status(200).json(updatedCategory)) //200 is naturally sent -- KHWA
     .catch(next);
 });
 

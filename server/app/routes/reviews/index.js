@@ -1,7 +1,7 @@
 'use strict';
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
-var Review = require('../../../db/models/review')
+var Review = require('../../../db/models/review') //I would prefer to see db.model('review') OR better have db/index.js export the models so you can import that file and have access to all models (and not have to worry as much about a name change) -- KHWA
 router.post('/', function(req, res, next){
   Review.create(req.body)
   .then(createdReview => res.send(createdReview))
@@ -22,7 +22,7 @@ router.delete('/:id', function(req, res, next) {
   .catch(next)
 })
 
-router.get('/?', function(req, res, next) {
+router.get('/?', function(req, res, next) { //don't need ?. write one query that includes both potential user and review. Might make more sense to get all for admin view and filter on front end -- KHWA
   if (req.query.user) {
     Review.findAll({
       where: {

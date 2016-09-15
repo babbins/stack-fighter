@@ -2,8 +2,10 @@
 var Sequelize = require('sequelize');
 var db = require('../_db');
 
-module.exports = db.define('order', {
+//consider required, allowNull, and default values -- KHWA
+
+module.exports = db.define('order', { 
   status: {
-    type: Sequelize.STRING
+    type: Sequelize.STRING //consider enum -- KHWA
   }
 })

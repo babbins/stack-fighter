@@ -56,4 +56,6 @@ module.exports = function (app, db) {
 
     });
 
+    //I expect a /signup here -- KHWA
+
 };
