@@ -3,17 +3,21 @@ app.config(function ($stateProvider) {
         url: '/my-orders',
         templateUrl: 'js/order/myOrders.html',
         resolve: {
-          orders: function(OrderFactory, $stateParams){
-            OrderFactory.getUserOrders($stateParams.id);
+          orders: function(OrderFactory){
+            return OrderFactory.getUserOrders();
           }
+        },
+        controller: function($scope, orders){
+          console.log('ORDERS', orders);
+          $scope.orders = orders;
         }
     });
 });
 
 app.factory('OrderFactory', function($http){
   return {
-    getUserOrders: function(id){
-      return: $http.get('/api/users')
+    getUserOrders: function(){
+      return $http.get('/api/orders').then(res => res.data);
     }
   }
 })

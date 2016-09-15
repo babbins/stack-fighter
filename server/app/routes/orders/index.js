@@ -3,12 +3,18 @@ var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 
 var Order = require('../../../db/models/order.js');
+var Character = require('../../../db/models/character.js');
 
 
 // '/orders'
 
 router.get('/', function(req, res, next){
-  Order.findAll({})
+
+    if (!req.user.isAdmin){
+      req.query = { userId: req.user.id}
+    }
+    console.log(req.query,'THIS IS req.query');
+  Order.findAll({where: req.query, include: { model: Character }})
   .then(orders => res.send(orders))
   .catch(next);
 });

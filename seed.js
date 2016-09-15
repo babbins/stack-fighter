@@ -1,8 +1,9 @@
 var Promise = require('bluebird');
-var db = require('./server/db/_db');
+var db = require('./server/db');
 var Character = require('./server/db/models/character');
 var Category = require('./server/db/models/category');
 var User = require('./server/db/models/user');
+var Order = require('./server/db/models/order');
 
 var data = {
     character: [{
@@ -154,7 +155,40 @@ var data = {
         last_name: 'Mcuserson'
     }]
 };
+var seedCharacterOrders = function () {
 
+    var rows = [
+      { characterId: 1, orderId: 1},
+      { characterId: 5, orderId: 1},
+      { characterId: 6, orderId: 1},
+      { characterId: 7, orderId: 1},
+      { characterId: 3, orderId: 1}
+    ];
+
+    var creatingCharacterOrders = rows.map(function (userObj) {
+        return db.model('CharacterOrder').create(userObj);
+    });
+
+    return Promise.all(creatingCharacterOrders);
+
+};
+var seedOrders = function () {
+
+    var rows = [
+      { status: 'delivered', userId: '2'},
+      { status: 'approved', userId: '2'},
+      { status: 'pending', userId: '2'},
+      { status: 'delivered', userId: '2'},
+      { status: 'delivered', userId: '2'}
+    ];
+
+    var creatingCharacterOrders = rows.map(function (userObj) {
+        return db.model('CharacterOrder').create(userObj);
+    });
+
+    return Promise.all(creatingCharacterOrders);
+
+};
 db.sync({
         force: true
     })
@@ -166,6 +200,12 @@ db.sync({
                     .create(item);
             });
         });
+    })
+    .then(function(){
+      return Order.create({status: 'pending', userId: '2'});
+    })
+    .then(function(){
+      return seedCharacterOrders();
     })
     .then(function() {
         console.log('finished inserting data');
