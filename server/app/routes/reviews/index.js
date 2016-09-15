@@ -37,6 +37,10 @@ router.get('/', function(req, res, next) {
       where: {
         characterId: req.query.character
       },
+      include: {
+        model: User,
+        attributes: ['first_name', 'last_name']
+      }
     })
     .then(foundReviews => res.send(foundReviews))
     .catch(next)

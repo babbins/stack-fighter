@@ -1,4 +1,4 @@
-app.controller('CharacterDetailCtrl', function($scope, character, categories){
+app.controller('CharacterDetailCtrl', function($scope, character, categories, reviews){
   $scope.character = character;
   var separateTypes = function(array){
        var sortedArr = [];
@@ -27,4 +27,5 @@ app.controller('CharacterDetailCtrl', function($scope, character, categories){
      }
      $scope.categories.push(category)
    }
+   $scope.reviews = reviews
 })
