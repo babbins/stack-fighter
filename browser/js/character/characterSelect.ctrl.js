@@ -6,6 +6,10 @@ app.controller('CharacterSelectCtrl', function($scope, characters){
 
   $scope.selectCharacter = function(character){
     $scope.selectedCharacter = character;
-  }
+  };
+
+  $scope.addToCart = function(quantity, character){
+    console.log("This Button was pressed yo!", quantity, character);
+  };
 
 });
