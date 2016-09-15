@@ -16,6 +16,12 @@ router.get('/:id', function(req, res, next){
   .catch(next)
 })
 
+router.get('/categories/:id', function(req, res, next){
+  Character.findById(req.params.id)
+  .then(foundCharacter => foundCharacter.getCategories())
+  .then(foundCategories => res.send(foundCategories))
+  .catch(next)
+})
 router.post('/', function(req, res, next){
   Character.create(req.body)
   .then(createdCharacter => res.send(createdCharacter))

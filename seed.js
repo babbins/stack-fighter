@@ -4,13 +4,14 @@ var Character = require('./server/db/models/character');
 var Category = require('./server/db/models/category');
 var User = require('./server/db/models/user');
 var Order = require('./server/db/models/order');
+var Review = require('./server/db/models/review')
 
 var data = {
     character: [{
         name: 'Ryu',
         portrait: 'http://i.imgur.com/FOziwVc.gif',
         idleSprite: 'http://i.imgur.com/wtz9sU8.gif',
-        description: 'Ryu made his debut in the first Street Fighter as the primary playable character in the game, with his best friend, rival, and sparring partner Ken Masters serving as the second player\'s character. Both compete in the tournament depicted in the game in order to test their strength against the tournament\'s champion, Sagat.',
+        description: 'Ryu made his debut in the first Street Fighter as the primary playable character in the Game, with his best friend, rival, and sparring partner Ken Masters serving as the second player\'s character. Both compete in the tournament depicted in the Game in order to test their strength against the tournament\'s champion, Sagat.',
         price: '500.00',
         strength: '7',
         intelligence: '6',
@@ -60,7 +61,7 @@ var data = {
         name: 'Guile',
         portrait: 'http://i.imgur.com/DyPYeAz.gif',
         idleSprite: 'http://i.imgur.com/1gdmCYs.gif',
-        description: 'Guile first appears in Street Fighter II (1991) as one of the eight selectable characters featured in the first release of the game. Guile leaves his country and family to enter the World Warrior tournament to avenge the death of his friend Charlie, who was killed by M. Bison, the tournament\'s sponsor, sometime before the events of the game. In his ending, he defeats Bison, but is dissuaded from killing him by his wife and their daughter.',
+        description: 'Guile first appears in Street Fighter II (1991) as one of the eight selectable characters featured in the first release of the Game. Guile leaves his country and family to enter the World Warrior tournament to avenge the death of his friend Charlie, who was killed by M. Bison, the tournament\'s sponsor, sometime before the events of the Game. In his ending, he defeats Bison, but is dissuaded from killing him by his wife and their daughter.',
         price: '500.00',
         strength: '7',
         intelligence: '4',
@@ -108,38 +109,38 @@ var data = {
         luck: '5'
     }],
     category: [{
-        type: 'game',
+        type: 'Game',
         value: 'SFII'
     }, {
-        type: 'game',
+        type: 'Game',
         value: 'SFIII'
     }, {
-        type: 'game',
+        type: 'Game',
         value: 'SFIV'
     }, {
-        type: 'game',
+        type: 'Game',
         value: 'SFIII:Alpha'
     }, {
-        type: 'game',
+        type: 'Game',
         value: 'MarvelVsCapcom2'
     }, {
-        type: 'game',
+        type: 'Game',
         value: 'MarvelVsCapcom3'
     }, {
-        type: 'allegiance',
-        value: 'good'
+        type: 'Allegiance',
+        value: 'Good'
     }, {
-        type: 'allegiance',
-        value: 'evil'
+        type: 'Allegiance',
+        value: 'Evil'
     }, {
-        type: 'allegiance',
-        value: 'neutral'
+        type: 'Allegiance',
+        value: 'Neutral'
     }, {
-        type: 'gender',
-        value: 'male'
+        type: 'Gender',
+        value: 'Male'
     }, {
-        type: 'gender',
-        value: 'female'
+        type: 'Gender',
+        value: 'Female'
     }],
     user: [{
         email: 'admin@admin.com',
@@ -153,6 +154,93 @@ var data = {
         password: 'user',
         first_name: 'User',
         last_name: 'Mcuserson'
+    }],
+    CharacterCategory: [{
+        characterId: 1,
+        categoryId: 1
+    }, {
+        characterId: 1,
+        categoryId: 2
+    }, {
+        characterId: 1,
+        categoryId: 3
+    }, {
+        characterId: 1,
+        categoryId: 4
+    }, {
+        characterId: 1,
+        categoryId: 5
+    }, {
+        characterId: 1,
+        categoryId: 6
+    }, {
+        characterId: 1,
+        categoryId: 7
+    }, {
+        characterId: 1,
+        categoryId: 10
+    }, {
+        characterId: 2,
+        categoryId: 1
+    }, {
+        characterId: 2,
+        categoryId: 2
+    }, {
+        characterId: 2,
+        categoryId: 3
+    }, {
+        characterId: 2,
+        categoryId: 4
+    }, {
+        characterId: 2,
+        categoryId: 5
+    }, {
+        characterId: 2,
+        categoryId: 6
+    }, {
+        characterId: 2,
+        categoryId: 1
+    }, {
+        characterId: 2,
+        categoryId: 11
+    }, {
+        characterId: 3,
+        categoryId: 1
+    }, {
+        characterId: 3,
+        categoryId: 2
+    }, {
+        characterId: 3,
+        categoryId: 2
+    }, {
+        characterId: 3,
+        categoryId: 3
+    }, {
+        characterId: 3,
+        categoryId: 4
+    }, {
+        characterId: 3,
+        categoryId: 5
+    }, {
+        characterId: 3,
+        categoryId: 6
+    }, {
+        characterId: 3,
+        categoryId: 8
+    }, {
+        characterId: 3,
+        categoryId: 10
+    }],
+    review: [{
+        rating: 5,
+        description: 'LUV DAT RYU',
+        userId: 1,
+        characterId: 1
+    }, {
+        rating: 1,
+        description: 'YUCKY',
+        userId: 1,
+        characterId: 1
     }]
 };
 function rand(min, max) {
