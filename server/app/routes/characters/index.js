@@ -11,7 +11,12 @@ router.get('/', function(req, res, next){
 })
 
 router.get('/:id', function(req, res, next){
-  Character.findById(req.params.id)
+  Character.findById(req.params.id, {
+    include: [{
+      model: category,
+      where: {}
+    }]
+  })
   .then(foundCharacter => res.send(foundCharacter))
   .catch(next)
 })

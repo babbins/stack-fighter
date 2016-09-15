@@ -14,7 +14,7 @@ module.exports = db.define('character', {
   },
   idleSprite: {
     type: Sequelize.STRING
-  }, 
+  },
   description: {
     type: Sequelize.TEXT
   },

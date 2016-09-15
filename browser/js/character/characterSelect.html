@@ -4,9 +4,6 @@
   <div class="row">
     <div class="col-xs-4 col-xs-offset-4">
       <h4>{{selectedCharacter.name}}</h4>
-      <a ui-sref="characterDetail({id: selectedCharacter.id})">
-        Character Detail
-      </a>
       <h6>Price: ${{selectedCharacter.price}} </h6>
       <div class="col-xs-8">
       <br>
@@ -25,7 +22,8 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="charSelect row" ng-repeat="character in characters">
-        <div ng-mouseover='selectCharacter(character)' ng-click='characterDetail(character)'>
+        <div ng-mouseover='selectCharacter(character)'
+             ui-sref="characterDetail({id: character.id})">
           <img ng-src="{{character.portrait}}">
         </div>
       </div>

@@ -3,8 +3,8 @@ app.config(function($stateProvider){
     url: '/characters/:id',
     templateUrl: 'js/character/characterDetail.html',
     resolve: {
-      character: function($http, $stateParams){
-        return $http.get('/api/characters/' + $stateParams.id).then(res => res.data)
+      character: function(characterFactory, $stateParams){
+        return characterFactory.getById($stateParams.id)
       }
     },
     controller: 'CharacterDetailCtrl'
