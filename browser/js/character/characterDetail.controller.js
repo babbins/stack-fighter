@@ -1,4 +1,4 @@
-app.controller('CharacterDetailCtrl', function($scope, character, categories){
+app.controller('CharacterDetailCtrl', function($scope, character, categories, reviews, characterFactory, $stateParams){
   $scope.character = character;
   var separateTypes = function(array){
        var sortedArr = [];
@@ -26,5 +26,17 @@ app.controller('CharacterDetailCtrl', function($scope, character, categories){
        category.values.push(sortedCategories[index][i].value)
      }
      $scope.categories.push(category)
+   }
+   $scope.reviews = reviews
+   $scope.error = ''
+   $scope.createReview = function() {
+       characterFactory.create($scope.newReview)
+       .then(() => characterFactory.getRevsById($stateParams.id))
+       .then(function(foundReviews){
+           $scope.reviews = foundReviews
+       })
+       .catch(function(err){
+           $scope.error = err
+       })
    }
 })
