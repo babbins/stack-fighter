@@ -4,15 +4,16 @@ app.config(function($stateProvider){
     templateUrl: 'js/admin/characters/characters.html',
     controller: 'AdminCharactersCtrl',
     resolve: {
-      characters: function(AdminFactory){
-        return AdminFactory.getCharacters();
+      characters: function(characterFactory){
+        return characterFactory.getAll();
       }
     }
 
   })
 })
 
-app.controller('AdminCharactersCtrl', function($scope, AdminFactory, characters){
+app.controller('AdminCharactersCtrl', function($scope, characterFactory, characters){
   console.log(characters);
   $scope.characters = characters;
+
 });

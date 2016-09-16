@@ -12,6 +12,6 @@ app.config(function($stateProvider){
   })
 })
 
-app.controller('AdminCharacterDetailCtrl', function($scope, AdminFactory, character){
+app.controller('AdminCharacterDetailCtrl', function($scope, character){
   $scope.character = character;
 });
