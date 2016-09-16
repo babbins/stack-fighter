@@ -13,6 +13,11 @@
 
         <div ng-show="user" class="welcome">
             <span>Welcome, {{ user.first_name }}!</span>
+
+            <a ui-sref="characterSelect" class="btn btn-default btn-sm">
+                <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
+            </a>
+
             <a ng-click="logout()">Logout</a>
         </div>
     </div>
