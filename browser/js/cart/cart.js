@@ -17,7 +17,7 @@ app.directive('cartSidebar', function(CartFactory) {
                 // }
                 scope.currentCart = response
                 scope.total = CartFactory.cartTotal(scope.currentCart.characters)
-                console.log(scope.total);
+                // console.log(scope.total);
             })
         }
     }
