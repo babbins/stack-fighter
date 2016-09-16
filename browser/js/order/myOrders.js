@@ -8,7 +8,6 @@ app.config(function ($stateProvider) {
           }
         },
         controller: function($scope, orders){
-          console.log('ORDERS', orders);
           $scope.orders = orders;
         }
     });

@@ -13,7 +13,6 @@ router.get('/', function(req, res, next){
     if (!req.user.isAdmin){
       req.query = { userId: req.user.id}
     }
-    console.log(req.query,'THIS IS req.query');
   Order.findAll({where: req.query, include: { model: Character }})
   .then(orders => res.send(orders))
   .catch(next);
