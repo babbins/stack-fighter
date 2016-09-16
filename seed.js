@@ -89,7 +89,7 @@ var data = {
         luck: '6'
     }, {
         name: 'Bison',
-        portrait: 'http://i.imgur.com/cQnA8xL.gif',
+        portrait: 'http://i.imgur.com/Txw5i6v.gif',
         idleSprite: 'http://i.imgur.com/RhpRdA9.gif',
         description: 'M. Bison is an archetypal villain motivated by his own self-seeking interests and lust for absolute power through world domination. He is a ruthless, arrogant and unforgiving dictator who seeks to rule the world with an iron fist whilst also being universally regarded as the greatest and most powerful martial artist of all time.',
         price: '1000.00',
@@ -100,7 +100,7 @@ var data = {
     }, {
         name: 'Zangief',
         portrait: 'http://i.imgur.com/Hp4pUTx.gif',
-        idleSprite: 'http://i.imgur.com/4iVh41W.gif',
+        idleSprite: 'http://i.imgur.com/uk6PCsb.gif',
         description: 'Zangief is a massive fighter, weighing 400 lbs and standing slightly over 7 feet tall, placing him among the tallest characters in the entire Street Fighter roster.',
         price: '1000.00',
         strength: '10',
