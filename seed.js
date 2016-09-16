@@ -49,7 +49,7 @@ var data = {
         luck: '3'
     }, {
         name: 'Balrog',
-        portrait: 'http://i.imgur.com/cQnA8xL.gif',
+        portrait: 'http://i.imgur.com/Gl6tSAi.gif',
         idleSprite: 'http://i.imgur.com/4iVh41W.gif',
         description: 'Balrog is generally self-centered, hot-tempered, arrogant and sadistic. He is a belligerent pugilist who possesses an insatiable urge for money and a vicious, bullying mean streak, often refusing to take responsibility for his actions. Despite being a once great prize boxer, Balrog has intentionally cheated in his fights whenever he felt like it, and has even killed one of his opponents.',
         price: '500.00',
@@ -100,7 +100,7 @@ var data = {
     }, {
         name: 'Zangief',
         portrait: 'http://i.imgur.com/Hp4pUTx.gif',
-        idleSprite: 'http://i.imgur.com/4iVh41W.gif',
+        idleSprite: 'http://i.imgur.com/2t2hMFv.gif',
         description: 'Zangief is a massive fighter, weighing 400 lbs and standing slightly over 7 feet tall, placing him among the tallest characters in the entire Street Fighter roster.',
         price: '1000.00',
         strength: '10',
