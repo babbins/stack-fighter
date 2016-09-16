@@ -3,15 +3,17 @@ var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 
 var Character = require('../../../db/models/character')
+var Category = require('../../../db/models/category')
 
 router.get('/', function(req, res, next){
-  Character.findAll()
+  Character.findAll({include: [Category]})
   .then(foundCharacters => res.send(foundCharacters))
-  .catch(next)
+  .catch(next);
 })
 
+
 router.get('/:id', function(req, res, next){
-  Character.findById(req.params.id)
+  Character.findOne({where: {id: req.params.id}, include: [Category]})
   .then(foundCharacter => res.send(foundCharacter))
   .catch(next)
 })
