@@ -23,6 +23,7 @@ router.get('/categories/:id', function(req, res, next){
   .then(foundCategories => res.send(foundCategories))
   .catch(next)
 })
+
 router.post('/', function(req, res, next){
   Character.create(req.body)
   .then(createdCharacter => res.send(createdCharacter))
