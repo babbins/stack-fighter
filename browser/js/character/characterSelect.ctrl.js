@@ -75,7 +75,9 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
     $scope.filter();
   };
 
-
+  $scope.go = function(state, payload){
+    $state.go(state, payload);
+  }
 
   $scope.deleteFilter = function(filter) {
     var toDelete = $scope.activeFilter.indexOf(filter);
