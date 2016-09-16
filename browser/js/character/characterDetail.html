@@ -20,6 +20,19 @@
           <p>Rating: {{review.rating}}</p>
           <p>"{{review.description}}" - {{review.user.first_name + " " + review.user.last_name}}</p>
         </div>
+        <form ng-submit="createReview()">
+          <select class="form-control" ng-model="newReview.rating">
+            <option>1</option>
+            <option>2</option>
+            <option>3</option>
+            <option>4</option>
+            <option>5</option>
+          </select>
+          <textarea class="form-control" rows="3" ng-model="newReview.description">
+          </textarea>
+          <input class="btn btn-default" type="submit" value="Submit">
+        </form>
+        <h3>{{error}}</h3>
       </div>
     </div>
   </div>
