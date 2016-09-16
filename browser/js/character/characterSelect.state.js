@@ -5,8 +5,11 @@ app.config(function ($stateProvider){
     templateUrl: 'js/character/characterSelect.html',
     resolve: {
       characters: function(characterFactory){
-        return characterFactory.getAll()
+        return characterFactory.getAll();
+      },
+      categories: function(CategoryFactory){
+        return CategoryFactory.fetchAll();
       }
     }
-  })
-})
+  });
+});

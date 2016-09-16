@@ -20,21 +20,21 @@
   </div>
   <div class="row pricebar">
     <div class="col-xs-offset-5 col-xs-5">
-     <select class="selectpicker show-tick btn-default" ng-model="quantity">
+      <select class="selectpicker show-tick btn-default" ng-model="quantity">
           <option value=''>0</option>
-          <option value="1">1</option>
-          <option value="2">2</option>
-          <option value="3">3</option>
-          <option value="4">4</option>
-          <option value="5">5</option>
+          <option value=1>1</option>
+          <option value=2>2</option>
+          <option value=3>3</option>
+          <option value=4>4</option>
+          <option value=5>5</option>
         </select>
       <button ng-click="addToCart(quantity,selectedCharacter)" type="button" class="btn btn-success" id="addToCart">Add To Cart</button>
     </div>
   </div>
   <div class="row">
     <div class='col-xs-3' ng-repeat='category in sortedCategories'>
-     <select data-toggle="select" class="form-control select select-inverse mrs mbm" ng-model= 'selected'' ng-change="addFilter(selected)">
-        <option value=''>{{category[0]}}</option>
+      <select data-toggle="select" class="form-control select select-inverse mrs mbm" ng-model='selected' ' ng-change="addFilter(selected)">
+        <option value=' '>{{category[0]}}</option>
         <option ng-repeat="option in category" ng-if="option!=category[0]" value={{option}}>{{option.value}}</option>
       </select>
     </div>
@@ -44,22 +44,22 @@
   <div class="row">
     <div class="col-xs-12">
       <div class="charSelect row" ng-repeat="character in characters">
-        <div ng-mouseover='selectCharacter(character)'
+        <div ng-mouseover='selectCharacter(character) '
              ui-sref="characterDetail({id: character.id})">
           <img ng-src="{{character.portrait}}">
         </div>
       </div>
     </div>
     <br>
-    <div class='row filters'>
-      <div class='col-xs-offset-5 col-xs-5'
+    <div class='row filters '>
+      <div class='col-xs-offset-5 col-xs-5 '
       <h5>Active Filters</h5>
       </div>
       <br>
-      <div class='col-xs-12'>
+      <div class='col-xs-12 '>
       <div class='activeFilters 'ng-repeat="filter in activeFilter">
       <h7>{{filter.value}}<h7>
-      <button class='round btn-danger' ng-click='deleteFilter(filter)'>x</button>
+      <button class='round btn-danger ' ng-click='deleteFilter(filter) '>x</button>
       </div>
       </div>
       </div>
