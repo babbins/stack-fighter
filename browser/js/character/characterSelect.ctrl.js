@@ -41,10 +41,10 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
       }
       if (counter === $scope.activeFilter.length) {
         console.log('cool!')
-        $scope.characters[k].unactive = false;
+        $scope.characters[k].inactive = false;
       } else {
         console.log('need to deactivate')
-        $scope.characters[k].unactive = true;
+        $scope.characters[k].inactive = true;
         console.log($scope.characters[0]);
       }
     }
