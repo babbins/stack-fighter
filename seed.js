@@ -285,7 +285,23 @@ var seedOrders = function () {
     }));
 
 };
+var seedOrders = function () {
 
+    var rows = [
+      { status: 'delivered', userId: '2'},
+      { status: 'approved', userId: '2'},
+      { status: 'pending', userId: '2'},
+      { status: 'delivered', userId: '2'},
+      { status: 'delivered', userId: '2'}
+    ];
+
+    var creatingCharacterOrders = rows.map(function (userObj) {
+        return Order.create(userObj);
+    });
+
+    return Promise.all(creatingCharacterOrders);
+
+};
 db.sync({
         force: true
     })
@@ -297,6 +313,10 @@ db.sync({
                     .create(item);
             });
         });
+    })
+
+    .then(function(){
+      return Order.create({status: 'pending', userId: '2'});
     })
     .then(() => seedOrders())
     .then(() => seedReviews())

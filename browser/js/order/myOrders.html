@@ -1,0 +1,14 @@
+<h1>My Orders</h1>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-8 col-xs-offset-2 well well-lg" ng-repeat="order in orders">
+      <div class="row">
+        <h1> Order Status: {{order.status}} </h1>
+        <div class="col-xs-4" ng-repeat='character in order.characters'>
+          {{character.name}}
+          <img ng-src="{{character.idleSprite}}" alt="">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

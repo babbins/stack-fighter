@@ -8,14 +8,8 @@ var Category = require('../../../db/models/category')
 router.get('/', function(req, res, next){
   Character.findAll({include: [Category]})
   .then(foundCharacters => res.send(foundCharacters))
-  .catch(next)
-})
-
-router.get('/categories', function(req, res, next){
-  Character.findAll({include: [Category]})
-  .then(foundCharacters => res.send(foundCharacters))
   .catch(next);
-});
+})
 
 router.get('/:id', function(req, res, next){
   Character.findOne({where: {id: req.params.id}, include: [Category]})
