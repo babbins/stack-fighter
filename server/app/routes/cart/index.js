@@ -6,17 +6,6 @@ var Cart = require('../../../db/models/cart');
 var User = require('../../../db/models/user');
 var Character = require('../../../db/models/character');
 
-// router.get('/', function(req, res, next){
-//     console.log(req.user);
-//     Cart.findAll()
-//     .then(getCart => {
-//         console.log("LOG FROM CART.FINDALL --> GET CART: ");
-//         res.json(getCart)
-//     })
-//     .catch(next);
-// });
-
-
 router.get('/', function(req, res, next){
     if(!req.user.isAdmin){
         req.query = req.user.id
@@ -36,3 +25,22 @@ router.get('/', function(req, res, next){
     })
     .catch(next);
 });
+
+router.post('/', function(req, res, next) {
+    User.findOne({
+        where: {
+            id: req.user.id
+        },
+        attributes: ['cartId']
+    })
+    .then(foundUser => {
+        console.log("FU CART ID: ", foundUser.cartId);
+        return Cart.findById(foundUser.cartId)
+        // res.send(foundUser);
+    })
+    .then(foundCart => foundCart.addCharacter(req.body.character))
+    .then(function(){
+        res.end();
+    })
+    .catch(next);
+})

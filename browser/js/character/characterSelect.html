@@ -1,36 +1,38 @@
 <div class="container">
-    <div class="sidebar col-xs-2">
-        <cart-sidebar></cart-sidebar>
-    </div>
-    <div class="container col-xs-10" id="characterSelected">
-      <h1 class="SelectTitle"> SELECT YOUR CHARACTER </h1>
-      <div class="row">
-        <div class="col-xs-4 col-xs-offset-4">
-          <h4>{{selectedCharacter.name}}</h4>
-          <h6>Price: ${{selectedCharacter.price}} </h6>
-          <div class="col-xs-8">
-          <br>
-          <img id="portrait" ng-src="{{selectedCharacter.idleSprite}}" alt="">
-          </div>
-          <div class="col-xs-4">
-          <ul id="Stats">
-            <li>Strength: {{selectedCharacter.strength}}</li>
-            <li>Speed: {{selectedCharacter.speed}}</li>
-            <li>Intelligence: {{selectedCharacter.intelligence}}</li>
-            <li>Luck: {{selectedCharacter.luck}}</li>
-          </ul>
-          </div>
+    <div class="row">
+        <div class="sidebar col-xs-2">
+            <cart-sidebar></cart-sidebar>
         </div>
-      </div>
-      <div class="row">
-        <div class="col-xs-12">
-          <div class="charSelect row" ng-repeat="character in characters">
-            <div ng-mouseover='selectCharacter(character)'
-                 ui-sref="characterDetail({id: character.id})">
-              <img ng-src="{{character.portrait}}">
+
+        <div class="container col-xs-10" id="characterSelected">
+            <h1 class="SelectTitle"> SELECT YOUR CHARACTER </h1>
+            <div>
+                <div class="col-xs-4 col-xs-offset-4">
+                    <h4>{{selectedCharacter.name}}</h4>
+                    <h6>Price: ${{selectedCharacter.price}} </h6>
+                    <div class="col-xs-8">
+                        <br>
+                        <img id="portrait" ng-src="{{selectedCharacter.idleSprite}}" alt="">
+                    </div>
+                    <div class="col-xs-4">
+                        <ul id="Stats">
+                            <li>Strength: {{selectedCharacter.strength}}</li>
+                            <li>Speed: {{selectedCharacter.speed}}</li>
+                            <li>Intelligence: {{selectedCharacter.intelligence}}</li>
+                            <li>Luck: {{selectedCharacter.luck}}</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
-          </div>
+            <div class="row">
+                <div class="col-xs-12">
+                    <div class="charSelect row" ng-repeat="character in characters">
+                        <div ng-mouseover='selectCharacter(character)' ui-sref="characterDetail({id: character.id})">
+                            <img ng-src="{{character.portrait}}">
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
-      </div>
     </div>
 </div>

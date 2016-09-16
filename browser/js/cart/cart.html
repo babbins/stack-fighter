@@ -1,14 +1,28 @@
 <div>
-    <h1>Sidebar</h1>
-</div>
+    <div>
+        <h2>Your Team:</h2>
+    </div>
 
-<div>
-    {{cartItems.characters[0].name}}
-</div>
+    <!-- <div>
+        {{cartItems.characters[0].name}}
+    </div> -->
 
 
-<div class="container">
-  <div class="row testTest" ng-repeat="characters in cartItems.characters">
-      <h3>{{characters.name}}</h3>
-  </div>
+    <div class="container">
+      <div class="row testTest" ng-repeat="character in currentCart.characters">
+          <h4>{{character.id}} - {{character.name}}</h4>
+          <ul id="chatacterHighlights">
+              <li>
+                  <img ng-src="{{character.portrait}}">
+              </li>
+              <li>Price: ${{character.price}}</li>
+          </ul>
+      </div>
+      <div>
+          <h3>Total: ${{total}}</h3>
+      </div>
+    </div>
+    <div>
+        <button type="button" class="btn btn-default">Checkout</button>
+    </div>
 </div>
