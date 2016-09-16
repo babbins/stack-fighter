@@ -12,5 +12,8 @@ app.factory('characterFactory', function($http){
   charObj.getRevsById = function(id) {
     return $http.get('/api/reviews/?character=' + id).then(res => res.data);
   }
+  charObj.create = function(data) {
+    return $http.post('/api/reviews', data)
+  }
   return charObj
 })
