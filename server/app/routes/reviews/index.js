@@ -2,6 +2,7 @@
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var Review = require('../../../db/models/review')
+var User = require('../../../db/models/user')
 router.post('/', function(req, res, next){
   Review.create(req.body)
   .then(createdReview => res.send(createdReview))
@@ -35,6 +36,10 @@ router.get('/', function(req, res, next) {
     Review.findAll({
       where: {
         characterId: req.query.character
+      },
+      include: {
+        model: User,
+        attributes: ['first_name', 'last_name']
       }
     })
     .then(foundReviews => res.send(foundReviews))
