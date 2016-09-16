@@ -155,93 +155,135 @@ var data = {
         first_name: 'User',
         last_name: 'Mcuserson'
     }],
-    CharacterCategory: [{
-        characterId: 1,
-        categoryId: 1
-    }, {
-        characterId: 1,
-        categoryId: 2
-    }, {
-        characterId: 1,
-        categoryId: 3
-    }, {
-        characterId: 1,
-        categoryId: 4
-    }, {
-        characterId: 1,
-        categoryId: 5
-    }, {
-        characterId: 1,
-        categoryId: 6
-    }, {
-        characterId: 1,
-        categoryId: 7
-    }, {
-        characterId: 1,
-        categoryId: 10
-    }, {
-        characterId: 2,
-        categoryId: 1
-    }, {
-        characterId: 2,
-        categoryId: 2
-    }, {
-        characterId: 2,
-        categoryId: 3
-    }, {
-        characterId: 2,
-        categoryId: 4
-    }, {
-        characterId: 2,
-        categoryId: 5
-    }, {
-        characterId: 2,
-        categoryId: 6
-    }, {
-        characterId: 2,
-        categoryId: 1
-    }, {
-        characterId: 2,
-        categoryId: 11
-    }, {
-        characterId: 3,
-        categoryId: 1
-    }, {
-        characterId: 3,
-        categoryId: 2
-    }, {
-        characterId: 3,
-        categoryId: 2
-    }, {
-        characterId: 3,
-        categoryId: 3
-    }, {
-        characterId: 3,
-        categoryId: 4
-    }, {
-        characterId: 3,
-        categoryId: 5
-    }, {
-        characterId: 3,
-        categoryId: 6
-    }, {
-        characterId: 3,
-        categoryId: 8
-    }, {
-        characterId: 3,
-        categoryId: 10
-    }],
-    review: [{
-        rating: 5,
-        description: 'LUV DAT RYU',
-        userId: 1,
-        characterId: 1
-    }, {
-        rating: 1,
-        description: 'YUCKY',
-        userId: 1,
-        characterId: 1
-    }]
+};
+function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var seedReviews = function(){
+  var rows = [{
+          rating: 5,
+          description: 'LUV DAT RYU',
+          userId: 1,
+          characterId: 1
+      }, {
+          rating: 1,
+          description: 'YUCKY',
+          userId: 1,
+          characterId: 1
+      }]
+      return Promise.all(rows.map(function (userObj) {
+          return Review.create(userObj);
+      }));
+}
+var seedCharacterCategory = function(){
+  var rows = [{
+      characterId: 1,
+      categoryId: 1
+  }, {
+      characterId: 1,
+      categoryId: 2
+  }, {
+      characterId: 1,
+      categoryId: 3
+  }, {
+      characterId: 1,
+      categoryId: 4
+  }, {
+      characterId: 1,
+      categoryId: 5
+  }, {
+      characterId: 1,
+      categoryId: 6
+  }, {
+      characterId: 1,
+      categoryId: 7
+  }, {
+      characterId: 1,
+      categoryId: 10
+  }, {
+      characterId: 2,
+      categoryId: 2
+  }, {
+      characterId: 2,
+      categoryId: 3
+  }, {
+      characterId: 2,
+      categoryId: 4
+  }, {
+      characterId: 2,
+      categoryId: 5
+  }, {
+      characterId: 2,
+      categoryId: 6
+  }, {
+      characterId: 2,
+      categoryId: 1
+  }, {
+      characterId: 2,
+      categoryId: 11
+  }, {
+      characterId: 3,
+      categoryId: 1
+  }, {
+      characterId: 3,
+      categoryId: 2
+  }, {
+      characterId: 3,
+      categoryId: 3
+  }, {
+      characterId: 3,
+      categoryId: 4
+  }, {
+      characterId: 3,
+      categoryId: 5
+  }, {
+      characterId: 3,
+      categoryId: 6
+  }, {
+      characterId: 3,
+      categoryId: 8
+  }, {
+      characterId: 3,
+      categoryId: 10
+  }]
+  return Promise.all(rows.map(function (userObj) {
+      return db.model('CharacterCategory').create(userObj);
+  }));
+};
+
+var seedCharacterOrders = function () {
+    var rows = [
+      {characterId: 1, orderId: 1},
+      {characterId: 2, orderId: 1},
+      {characterId: 3, orderId: 1},
+      {characterId: 4, orderId: 1},
+      {characterId: 5, orderId: 2},
+      {characterId: 6, orderId: 2},
+      {characterId: 7, orderId: 2},
+      {characterId: 8, orderId: 2},
+    ];
+    return Promise.all(rows.map(function (userObj) {
+        return db.model('CharacterOrder').create(userObj);
+    }));
+
+};
+
+var seedOrders = function () {
+
+    var rows = [
+      { status: 'delivered', userId: '2'},
+      { status: 'approved', userId: '2'},
+      { status: 'pending', userId: '2'},
+      { status: 'delivered', userId: '2'},
+      { status: 'delivered', userId: '2'}
+    ];
+    return Promise.all(rows.map(function (userObj) {
+        return Order.create(userObj);
+    }));
+
 };
 function rand(min, max) {
   min = Math.ceil(min);
@@ -289,15 +331,15 @@ db.sync({
             });
         });
     })
+
     .then(function(){
       return Order.create({status: 'pending', userId: '2'});
     })
-    .then(function(){
-      seedOrders();
-    })
-    .then(function(){
-      return seedCharacterOrders();
-    })
+    .then(() => seedOrders())
+    .then(() => seedReviews())
+    .then(() => seedCharacterCategory())
+    .then(() => seedCharacterOrders())
+    .then(() => seedReviews())
     .then(function() {
         console.log('finished inserting data');
     })
