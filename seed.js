@@ -290,18 +290,6 @@ function rand(min, max) {
   max = Math.floor(max);
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
-var seedCharacterOrders = function () {
-    var rows = [];
-    for (var i = 0; i < 10; i++){
-      rows.push({ characterId: rand(1, 10), orderId: rand(1, 5)});
-    }
-    var creatingCharacterOrders = rows.map(function (userObj) {
-        return db.model('CharacterOrder').create(userObj);
-    });
-
-    return Promise.all(creatingCharacterOrders);
-
-};
 var seedOrders = function () {
 
     var rows = [
