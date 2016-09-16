@@ -3,6 +3,7 @@ var db = require('./server/db');
 var Character = require('./server/db/models/character');
 var Category = require('./server/db/models/category');
 var User = require('./server/db/models/user');
+var Order = require('./server/db/models/order');
 var Review = require('./server/db/models/review')
 
 var data = {
@@ -88,7 +89,7 @@ var data = {
         luck: '6'
     }, {
         name: 'Bison',
-        portrait: 'http://i.imgur.com/cQnA8xL.gif',
+        portrait: 'http://i.imgur.com/Txw5i6v.gif',
         idleSprite: 'http://i.imgur.com/RhpRdA9.gif',
         description: 'M. Bison is an archetypal villain motivated by his own self-seeking interests and lust for absolute power through world domination. He is a ruthless, arrogant and unforgiving dictator who seeks to rule the world with an iron fist whilst also being universally regarded as the greatest and most powerful martial artist of all time.',
         price: '1000.00',
@@ -99,7 +100,7 @@ var data = {
     }, {
         name: 'Zangief',
         portrait: 'http://i.imgur.com/Hp4pUTx.gif',
-        idleSprite: 'http://i.imgur.com/4iVh41W.gif',
+        idleSprite: 'http://i.imgur.com/uk6PCsb.gif',
         description: 'Zangief is a massive fighter, weighing 400 lbs and standing slightly over 7 feet tall, placing him among the tallest characters in the entire Street Fighter roster.',
         price: '1000.00',
         strength: '10',
@@ -154,83 +155,135 @@ var data = {
         first_name: 'User',
         last_name: 'Mcuserson'
     }],
-    CharacterCategory: [{
-        characterId: 1,
-        categoryId: 1
-    }, {
-        characterId: 1,
-        categoryId: 2
-    }, {
-        characterId: 1,
-        categoryId: 3
-    }, {
-        characterId: 1,
-        categoryId: 4
-    }, {
-        characterId: 1,
-        categoryId: 5
-    }, {
-        characterId: 1,
-        categoryId: 6
-    }, {
-        characterId: 1,
-        categoryId: 7
-    }, {
-        characterId: 1,
-        categoryId: 10
-    }, {
-        characterId: 2,
-        categoryId: 1
-    }, {
-        characterId: 2,
-        categoryId: 2
-    }, {
-        characterId: 2,
-        categoryId: 3
-    }, {
-        characterId: 2,
-        categoryId: 4
-    }, {
-        characterId: 2,
-        categoryId: 5
-    }, {
-        characterId: 2,
-        categoryId: 6
-    }, {
-        characterId: 2,
-        categoryId: 11
-    }, {
-        characterId: 3,
-        categoryId: 1
-    }, {
-        characterId: 3,
-        categoryId: 2
-    }, {
-        characterId: 3,
-        categoryId: 3
-    }, {
-        characterId: 3,
-        categoryId: 4
-    }, {
-        characterId: 3,
-        categoryId: 5
-    }, {
-        characterId: 3,
-        categoryId: 6
-    }, {
-        characterId: 3,
-        categoryId: 8
-    }, {
-        characterId: 3,
-        categoryId: 10
-    }],
-    review: [{
-        rating: 5,
-        description: 'LUV DAT RYU'
-    }, {
-        rating: 1,
-        description: 'YUCKY'
-    }]
+};
+function rand(min, max) {
+  min = Math.ceil(min);
+  max = Math.floor(max);
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+var seedReviews = function(){
+  var rows = [{
+          rating: 5,
+          description: 'LUV DAT RYU',
+          userId: 1,
+          characterId: 1
+      }, {
+          rating: 1,
+          description: 'YUCKY',
+          userId: 1,
+          characterId: 1
+      }]
+      return Promise.all(rows.map(function (userObj) {
+          return Review.create(userObj);
+      }));
+}
+var seedCharacterCategory = function(){
+  var rows = [{
+      characterId: 1,
+      categoryId: 1
+  }, {
+      characterId: 1,
+      categoryId: 2
+  }, {
+      characterId: 1,
+      categoryId: 3
+  }, {
+      characterId: 1,
+      categoryId: 4
+  }, {
+      characterId: 1,
+      categoryId: 5
+  }, {
+      characterId: 1,
+      categoryId: 6
+  }, {
+      characterId: 1,
+      categoryId: 7
+  }, {
+      characterId: 1,
+      categoryId: 10
+  }, {
+      characterId: 2,
+      categoryId: 2
+  }, {
+      characterId: 2,
+      categoryId: 3
+  }, {
+      characterId: 2,
+      categoryId: 4
+  }, {
+      characterId: 2,
+      categoryId: 5
+  }, {
+      characterId: 2,
+      categoryId: 6
+  }, {
+      characterId: 2,
+      categoryId: 1
+  }, {
+      characterId: 2,
+      categoryId: 11
+  }, {
+      characterId: 3,
+      categoryId: 1
+  }, {
+      characterId: 3,
+      categoryId: 2
+  }, {
+      characterId: 3,
+      categoryId: 3
+  }, {
+      characterId: 3,
+      categoryId: 4
+  }, {
+      characterId: 3,
+      categoryId: 5
+  }, {
+      characterId: 3,
+      categoryId: 6
+  }, {
+      characterId: 3,
+      categoryId: 8
+  }, {
+      characterId: 3,
+      categoryId: 10
+  }]
+  return Promise.all(rows.map(function (userObj) {
+      return db.model('CharacterCategory').create(userObj);
+  }));
+};
+
+var seedCharacterOrders = function () {
+    var rows = [
+      {characterId: 1, orderId: 1},
+      {characterId: 2, orderId: 1},
+      {characterId: 3, orderId: 1},
+      {characterId: 4, orderId: 1},
+      {characterId: 5, orderId: 2},
+      {characterId: 6, orderId: 2},
+      {characterId: 7, orderId: 2},
+      {characterId: 8, orderId: 2},
+    ];
+    return Promise.all(rows.map(function (userObj) {
+        return db.model('CharacterOrder').create(userObj);
+    }));
+
+};
+
+var seedOrders = function () {
+
+    var rows = [
+      { status: 'delivered', userId: '2'},
+      { status: 'approved', userId: '2'},
+      { status: 'pending', userId: '2'},
+      { status: 'delivered', userId: '2'},
+      { status: 'delivered', userId: '2'}
+    ];
+    return Promise.all(rows.map(function (userObj) {
+        return Order.create(userObj);
+    }));
+
 };
 
 db.sync({
@@ -245,6 +298,11 @@ db.sync({
             });
         });
     })
+    .then(() => seedOrders())
+    .then(() => seedReviews())
+    .then(() => seedCharacterCategory())
+    .then(() => seedCharacterOrders())
+    .then(() => seedReviews())
     .then(function() {
         console.log('finished inserting data');
     })
