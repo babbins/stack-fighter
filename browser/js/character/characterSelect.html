@@ -50,6 +50,20 @@
         </div>
       </div>
     </div>
+    <br>
+    <div class='row filters'>
+      <div class='col-xs-offset-5 col-xs-5'
+      <h5>Active Filters</h5>
+      </div>
+      <br>
+      <div class='col-xs-12'>
+      <div class='activeFilters 'ng-repeat="filter in activeFilter">
+      <h7>{{filter.value}}<h7>
+      <button class='round btn-danger' ng-click='deleteFilter(filter)'>x</button>
+      </div>
+      </div>
+      </div>
+    </div>
   </div>
 </div>
 </row>

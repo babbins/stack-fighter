@@ -16,6 +16,10 @@
 
 } 
 
+.round{
+  border-radius: 25px;
+}
+
 .SelectTitle{
   text-align: center;
 }
@@ -42,4 +46,13 @@
 
 #categorySelect {
   float: center;
+}
+
+.filters {
+  margin: 50px 50px 50px 50px;
+}
+
+.activeFilters {
+  display: inline-block;
+  margin: 10px;
 }

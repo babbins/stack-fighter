@@ -1,4 +1,4 @@
-app.controller('CharacterSelectCtrl', function($scope, characters, CategoryFactory) {
+app.controller('CharacterSelectCtrl', function($scope, characters, CategoryFactory, $state) {
 
   CategoryFactory.fetchAll()
     .then(function(data) {
@@ -20,9 +20,8 @@ app.controller('CharacterSelectCtrl', function($scope, characters, CategoryFacto
       };
 
       $scope.addFilter = function(filter) {
-        if (filter[0] !== '{') {
-          return;
-        }
+        console.log(filter);
+        if (!filter[0]) return;
         filter = JSON.parse(filter);
         var added = false;
         if ($scope.activeFilter.length === 0) {
@@ -42,8 +41,13 @@ app.controller('CharacterSelectCtrl', function($scope, characters, CategoryFacto
         }
       };
 
+      $scope.deleteFilter = function(filter){
+        var toDelete = $scope.activeFilter.indexOf(filter);
+        $scope.activeFilter.splice(toDelete,1);
+      };
+
       $scope.clearFilter = function() {
-        $scope.activeFilter = [];
+        $state.reload();
         console.log("hello!", $scope.activeFilter);
       };
 
