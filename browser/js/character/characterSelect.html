@@ -34,18 +34,18 @@
   <div class="row">
     <div class='col-xs-3' ng-repeat='category in sortedCategories'>
       <select data-toggle="select" class="form-control select select-inverse mrs mbm" ng-model='selected' ' ng-change="addFilter(selected)">
-        <option value=' '>{{category[0]}}</option>
+        <option value=''>{{category[0]}}</option>
         <option ng-repeat="option in category" ng-if="option!=category[0]" value={{option}}>{{option.value}}</option>
       </select>
     </div>
-    <button ng-click="addFilters()" type="button" class="btn btn-warning" id="addFilters">Add Filter(s)</button>
+    <button ng-click="filter()" type="button" class="btn btn-warning" id="addFilters">Add Filter(s)</button>
     <button ng-click="clearFilter()" type="button" class="btn btn-danger" id="clearFilters">Clear Filter(s)</button>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <div class="charSelect row" ng-repeat="character in characters">
-        <div ng-mouseover='selectCharacter(character) '
-             ui-sref="characterDetail({id: character.id})">
+        <div ng-class='{inactive : character.unactive}' ng-mouseover='selectCharacter(character)'
+             ui-sref="characterDetail({id: character.id})" ng-disabled = "character.unactive">
           <img ng-src="{{character.portrait}}">
         </div>
       </div>

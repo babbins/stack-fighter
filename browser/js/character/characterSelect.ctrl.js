@@ -1,4 +1,4 @@
-app.controller('CharacterSelectCtrl', function($scope, characters, categories, CategoryFactory, $state) {
+app.controller('CharacterSelectCtrl', function($scope, characters, categories, characterFactory, CategoryFactory, $state) {
 
   $scope.categories = categories;
 
@@ -13,6 +13,44 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, C
   $scope.selectCharacter = function(character) {
     $scope.selectedCharacter = character;
   };
+
+  //mad experiment//////////////////////////////////////////////////////////////////////////////////////////
+
+  var resolving = []
+  for (var k = 1; k < characters.length+1; k++) {
+    resolving.push(characterFactory.getCatsById(k));
+  }
+  Promise.all(resolving)
+    .then(function(result) {
+      console.log(result);
+      for (var l = 0; l < characters.length; l++) {
+        $scope.characters[l].traits = result[l];
+      }
+      return;
+    });
+
+  $scope.filter = function() {
+    for (var k = 0; k < characters.length; k++) {
+      var counter = 0;
+      for (var i = 0; i < $scope.activeFilter.length; i++) {
+        for (var j = 0; j < $scope.characters[k].traits.length; j++) {
+          if ($scope.characters[k].traits[j].value === $scope.activeFilter[i].value) {
+            counter++;
+          }
+        }
+      }
+      if (counter === $scope.activeFilter.length) {
+        console.log('cool!')
+        $scope.characters[k].unactive = false;
+      } else {
+        console.log('need to deactivate')
+        $scope.characters[k].unactive = true;
+        console.log($scope.characters[0]);
+      }
+    }
+  };
+
+  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $scope.addFilter = function(filter) {
     console.log(filter);
@@ -34,16 +72,19 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, C
     if (!added) {
       $scope.activeFilter.push(filter);
     }
+    $scope.filter();
   };
+
+
 
   $scope.deleteFilter = function(filter) {
     var toDelete = $scope.activeFilter.indexOf(filter);
     $scope.activeFilter.splice(toDelete, 1);
+    $scope.filter();
   };
 
   $scope.clearFilter = function() {
     $state.reload();
-    console.log("hello!", $scope.activeFilter);
   };
 
   $scope.addToCart = function(quantity, character) {
