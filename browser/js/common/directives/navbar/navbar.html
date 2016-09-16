@@ -4,6 +4,9 @@
             <fullstack-logo></fullstack-logo>
         </div>
         <ul class="nav navbar-nav">
+            <li ng-show="user.isAdmin">
+                <a ui-sref-active="active" ui-sref=" adminHome ">{{ admin.label }}</a>
+            </li>
             <li ng-repeat="item in items" ng-show="!item.auth || isLoggedIn()">
                 <a ui-sref-active="active" ui-sref="{{ item.state }}">{{ item.label }}</a>
             </li>
