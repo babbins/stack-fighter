@@ -10,10 +10,7 @@ router.get('/', function(req, res, next){
     .then(gettingCategories => res.json(gettingCategories))
     .catch(next);
 });
-//Get all categories associated with a character
-// router.get('/character/:id', function(req, res, next){
-//     Category.findAll({where: })
-// })
+
 //Get single category.
 router.get('/:id', function(req, res, next){
     Category.findById(req.params.id)
@@ -43,3 +40,8 @@ router.delete('/:id', function(req, res, next){
     .then(deletedCategory => res.status(204).end())
     .catch(next);
 });
+
+//Get all characters associated with given categories
+router.get('/characters/', function(req, res, next){
+    Category.findAll();
+})

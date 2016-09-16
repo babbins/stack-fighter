@@ -16,8 +16,16 @@
 
 } 
 
+.round{
+  border-radius: 25px;
+}
+
 .SelectTitle{
   text-align: center;
+}
+
+.pricebar{
+  margin: 10px
 }
 
 #portrait {
@@ -26,4 +34,29 @@
 
 #Stats {
   display: block;
+}
+
+#quantitySelect {
+  display: inline-block;
+}
+
+#btn-success {
+  display: inline-block;
+}
+
+#categorySelect {
+  float: center;
+}
+
+.filters {
+  margin: 50px 50px 50px 50px;
+}
+
+.activeFilters {
+  display: inline-block;
+  margin: 10px;
+}
+
+.inactive {
+  opacity: .5;
 }
