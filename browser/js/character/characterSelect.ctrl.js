@@ -8,33 +8,20 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
 
   $scope.characters = characters;
 
+  console.log($scope.characters);
+
   $scope.selectedCharacter = characters[0];
 
   $scope.selectCharacter = function(character) {
     $scope.selectedCharacter = character;
   };
 
-  //mad experiment//////////////////////////////////////////////////////////////////////////////////////////
-
-  var resolving = []
-  for (var k = 1; k < characters.length+1; k++) {
-    resolving.push(characterFactory.getCatsById(k));
-  }
-  Promise.all(resolving)
-    .then(function(result) {
-      console.log(result);
-      for (var l = 0; l < characters.length; l++) {
-        $scope.characters[l].traits = result[l];
-      }
-      return;
-    });
-
   $scope.filter = function() {
     for (var k = 0; k < characters.length; k++) {
       var counter = 0;
       for (var i = 0; i < $scope.activeFilter.length; i++) {
-        for (var j = 0; j < $scope.characters[k].traits.length; j++) {
-          if ($scope.characters[k].traits[j].value === $scope.activeFilter[i].value) {
+        for (var j = 0; j < $scope.characters[k].categories.length; j++) {
+          if ($scope.characters[k].categories[j].value === $scope.activeFilter[i].value) {
             counter++;
           }
         }
@@ -49,8 +36,6 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
       }
     }
   };
-
-  ///////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
   $scope.addFilter = function(filter) {
     console.log(filter);
@@ -77,7 +62,7 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
 
   $scope.go = function(state, payload){
     $state.go(state, payload);
-  }
+  };
 
   $scope.deleteFilter = function(filter) {
     var toDelete = $scope.activeFilter.indexOf(filter);
