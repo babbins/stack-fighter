@@ -24,8 +24,19 @@ router.get('/categories/:id', function(req, res, next){
   .catch(next)
 })
 router.post('/', function(req, res, next){
+
+  if (req.body.categories){
+    var categories = req.body.categories;
+    console.log(categories);
+    delete req.body.categories;
+  }
+  var character;
   Character.create(req.body)
-  .then(createdCharacter => res.send(createdCharacter))
+  .then(createdCharacter => {
+    character = createdCharacter;
+    return createdCharacter.setCategories(categories);
+  })
+  .then(() => res.send(character))
   .catch(next)
 })
 
