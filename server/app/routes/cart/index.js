@@ -22,6 +22,7 @@ router.get('/', function(req, res, next){
             include: [Character]
         })
         .then(foundCart => {
+            console.log(foundCart);
             res.json(foundCart)  //characters array with length 0
         })
     })

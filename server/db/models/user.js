@@ -85,8 +85,9 @@ module.exports = db.define('user', {
         afterCreate: function(user) {
             return Cart.create()
             .then(function(cart){
+                console.log("Logging cart from user route", cart);
                 user.cartId = cart.id;
-                return user.save();         //?
+                return user.cartId;
             })
         }
     }
