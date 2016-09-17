@@ -11,6 +11,13 @@ app.config(function($stateProvider){
     });
 });
 
-app.controller('AdminManageUsersCtrl', function($scope, users){
+app.controller('AdminManageUsersCtrl', function($scope, users, UserFactory){
     $scope.users = users;
-})
+    $scope.deleteUser = function(user){
+        UserFactory.deleteUser(user.id)
+        .then(function(success){
+            console.log('User Deleted!');
+            $scope.users.splice($scope.users.indexOf(user, 1));
+        });
+    };
+});

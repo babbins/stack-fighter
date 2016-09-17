@@ -10,9 +10,9 @@ var Character = require('../../../db/models/character.js');
 
 router.get('/', function(req, res, next){
 
-    if (!req.user.isAdmin){
+  if (!req.user.isAdmin){
       req.query = { userId: req.user.id}
-    }
+  }
   Order.findAll({where: req.query, include: { model: Character }})
   .then(orders => res.send(orders))
   .catch(next);
