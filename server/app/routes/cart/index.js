@@ -9,6 +9,8 @@ var Character = require('../../../db/models/character');
 router.get('/', function(req, res, next){
     if(!req.user.isAdmin){
         req.query = req.user.id
+    } else if (req.user == null){
+        return
     }
     User.findById(req.query)
     .then(user => {

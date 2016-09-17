@@ -1,13 +1,10 @@
 #wrapper {
-  padding-left: 250px;
   transition: all 0.4s ease 0s;
 }
 
 #sidebar-wrapper {
-  margin-left: -250px;
-  left: 250px;
-  width: 250px;
-  background: #CCC;
+
+  background: #CCCCCC;
   position: fixed;
   height: 100%;
   overflow-y: auto;
@@ -15,41 +12,6 @@
   transition: all 0.4s ease 0s;
 }
 
-#page-content-wrapper {
-  width: 100%;
-}
-
-.sidebar-nav {
-  position: absolute;
-  top: 0;
-  width: 250px;
-  list-style: none;
-  margin: 0;
-  padding: 0;
-}
-
-@media (max-width:767px) {
-
-    #wrapper {
-      padding-left: 0;
-    }
-
-    #sidebar-wrapper {
-      left: 0;
-    }
-
-    #wrapper.active {
-      position: relative;
-      left: 250px;
-    }
-
-    #wrapper.active #sidebar-wrapper {
-      left: 250px;
-      width: 250px;
-      transition: all 0.4s ease 0s;
-    }
-
-}
 
 .charSelect {
 
@@ -77,11 +39,9 @@
   text-align: center;
 }
 
-
 .pricebar{
   margin: 10px
 }
->>>>>>> master
 
 #portrait {
   display: block;
