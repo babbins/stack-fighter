@@ -12,6 +12,9 @@ app.config(function($stateProvider){
   })
 })
 
-app.controller('AdminCharacterDetailCtrl', function($scope, character){
+app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFactory, character){
   $scope.character = character;
+  $scope.removeCharacter = function(){
+    return characterFactory.removeChar(character.id).then(() => $state.go('adminCharacters'));
+  }
 });
