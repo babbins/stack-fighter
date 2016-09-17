@@ -1,3 +1,14 @@
-<div ng-repeat="user in users">
-    <h1>{{user}}</h1>
+<div class='container'>
+<div class='col-xs-offset-2 col-xs-5'>
+<h1>Users</h1>
+<ul class='list-group' ng-repeat="user in users">
+    <li class="list-group-item">
+    <h5>{{user.email}}</h5>
+    <h5 ng-show = "user.isAdmin">Administrator</h5>
+     <button class="userOrders btn-success" id="wtf2" ng-click='userOrders(user)'>User Orders</button>
+    <button class="modifyUser btn-warning" id="wtf2" ng-click='modifyUser(user)'>Modify User</button>
+    <button class="deleteUser btn-danger" id="wtf2" ng-click='deleteUser(user)'>Delete User</button>
+    </li>
+</div>
+</div>
 </div>
