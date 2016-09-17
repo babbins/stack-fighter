@@ -1,4 +1,4 @@
-app.controller('CharacterDetailCtrl', function($scope, character, categories, reviews, characterFactory, $stateParams){
+app.controller('CharacterDetailCtrl', function($scope, character, reviews, characterFactory, $stateParams){
   $scope.character = character;
   var separateTypes = function(array){
        var sortedArr = [];
@@ -17,7 +17,7 @@ app.controller('CharacterDetailCtrl', function($scope, character, categories, re
        return sortedArr;
    };
    $scope.categories = []
-   var sortedCategories = separateTypes(categories)
+   var sortedCategories = separateTypes(character.categories)
    for (var index = 0; index < sortedCategories.length; index++) {
      var category = {}
      category.title = sortedCategories[index][0]

@@ -13,7 +13,10 @@ app.factory('characterFactory', function($http){
     return $http.get('/api/reviews/?character=' + id).then(res => res.data);
   }
   charObj.create = function(data) {
-    return $http.post('/api/reviews', data)
+    return $http.post('/api/reviews', data).then(res => res.data);
+  }
+  charObj.createChar = function(data){
+    return $http.post('/api/characters', data).then(res => res.data);
   }
   return charObj
 })
