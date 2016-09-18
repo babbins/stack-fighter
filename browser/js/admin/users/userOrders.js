@@ -5,7 +5,7 @@ app.config(function($stateProvider){
         controller: 'AdminUserOrdersCtrl',
         resolve: {
             userOrders : function(OrderFactory, $stateParams){
-                return OrderFactory.getUserOrders($stateParams.id);
+                return OrderFactory.getOneUserOrders($stateParams.id);
             }
         }
     });
