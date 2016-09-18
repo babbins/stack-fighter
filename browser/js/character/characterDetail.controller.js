@@ -27,9 +27,14 @@ app.controller('CharacterDetailCtrl', function($scope, character, reviews, chara
      }
      $scope.categories.push(category)
    }
+   reviews.forEach(function(review){
+       if (!review.userId) review.user = {first_name: 'Anon'}
+   })
+   console.log(reviews)
    $scope.reviews = reviews
    $scope.error = ''
    $scope.createReview = function() {
+       $scope.newReview.characterId = character.id
        characterFactory.create($scope.newReview)
        .then(() => characterFactory.getRevsById($stateParams.id))
        .then(function(foundReviews){

@@ -4,7 +4,13 @@ module.exports = router;
 var Review = require('../../../db/models/review')
 var User = require('../../../db/models/user')
 router.post('/', function(req, res, next){
-  Review.create(req.body)
+  var newReview = {
+    userId: req.user.id,
+    characterId: req.body.characterId,
+    rating: req.body.rating,
+    description: req.body.description
+  }
+  Review.create(newReview)
   .then(createdReview => res.send(createdReview))
   .catch(next)
 })
