@@ -4,7 +4,7 @@ module.exports = router;
 
 var Character = require('../../../db/models/character')
 var Category = require('../../../db/models/category')
-
+var adminTest = require('../../configure/authorization').adminTest;
 router.get('/', function(req, res, next){
   Character.findAll({include: [Category]})
   .then(foundCharacters => res.send(foundCharacters))
@@ -25,10 +25,9 @@ router.get('/categories/:id', function(req, res, next){
 })
 
 router.post('/', function(req, res, next){
-
+  if (!adminTest(req)) return res.send(401);
   if (req.body.categories){
     var categories = req.body.categories;
-    console.log(categories);
     delete req.body.categories;
   }
   var character;
@@ -42,6 +41,7 @@ router.post('/', function(req, res, next){
 })
 
 router.put('/:id', function(req, res, next){
+  if (!adminTest(req)) return res.send(401);
   if (req.body.categories){
     var categories = req.body.categories;
     delete req.body.categories;
@@ -58,6 +58,8 @@ router.put('/:id', function(req, res, next){
 })
 
 router.delete('/:id', function(req, res, next){
+  if (!adminTest(req)) return res.send(401);
+  if (!req.user.isAdmin) res.sendStatus(401);
   Character.findById(req.params.id)
   .then(foundCharacter => foundCharacter.destroy(req.body))
   .then(() => res.send('destroyed'))

@@ -4,15 +4,14 @@ module.exports = router;
 
 var Order = require('../../../db/models/order.js');
 var Character = require('../../../db/models/character.js');
-
+var adminTest = require('../../configure/authorization').adminTest;
 
 // '/orders'
 
 router.get('/', function(req, res, next){
-
-    if (!req.user.isAdmin){
-      req.query = { userId: req.user.id}
-    }
+  if (!req.user.isAdmin){
+    req.query = { userId: req.user.id}
+  }
   Order.findAll({where: req.query, include: { model: Character }})
   .then(orders => res.send(orders))
   .catch(next);
