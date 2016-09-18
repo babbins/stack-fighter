@@ -42,9 +42,18 @@ router.post('/', function(req, res, next){
 })
 
 router.put('/:id', function(req, res, next){
+  if (req.body.categories){
+    var categories = req.body.categories;
+    delete req.body.categories;
+  }
+  var character;
   Character.findById(req.params.id)
   .then(foundCharacter => foundCharacter.update(req.body))
-  .then(updatedCharacter => res.send(updatedCharacter))
+  .then(updatedCharacter => {
+    character = updatedCharacter;
+    return updatedCharacter.setCategories(categories);
+  })
+  .then(() => res.send(character))
   .catch(next)
 })
 

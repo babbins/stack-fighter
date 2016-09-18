@@ -1,9 +1,9 @@
 <div class="container">
   <div class="row">
     <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="removeCharacter()">Remove Character</button>
-    <button class="btn btn-warning glyphicon glyphicon-pencil" ng-click="updateCharacter()">Edit Character</button>
-
+    <button class="btn btn-warning glyphicon glyphicon-pencil" ui-sref="adminCharacterDetail.edit"/>
   </div>
+  <ui-view></ui-view>
   <div class="row">
     <div class="col-xs-8 col-sm-8 col-md-8 col-lg-8 col-xs-offset-2 well well-lg">
       <h1 class="SelectTitle">{{character.name}}</h1>
@@ -17,10 +17,11 @@
         <p>Intelligence: {{character.intelligence}}</p>
         <p>Speed: {{character.speed}}</p>
         <p>Luck: {{character.luck}}</p>
-        <div ng-repeat="category in categories">
+        <div ng-repeat="category in character.categories">
           <p>{{category.title}}: {{category.values.join(', ')}}</p>
         </div>
         <h3>{{error}}</h3>
+
       </div>
     </div>
   </div>
