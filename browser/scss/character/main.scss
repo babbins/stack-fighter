@@ -4,9 +4,13 @@
   float: left;
   margin: 5px;
   border: 1px solid transparent;
+
+  .active{
+  border: 1px solid transparent;
   &:hover {
       border:1px solid red;
-    }
+  }
+  }
 
   img {
     display: block;
@@ -58,5 +62,7 @@
 }
 
 .inactive {
-  opacity: .5;
+  border: 1px solid transparent;
+  opacity: .25;
 }
+
