@@ -107,6 +107,46 @@ var data = {
         intelligence: '3',
         speed: '5',
         luck: '5'
+    }, {
+        name: "Ibuki",
+        portrait: "http://i.imgur.com/XO9F9iA.jpg",
+        idleSprite: "http://i.imgur.com/vHDGXtw.gif",
+        description: null,
+        price: "750",
+        strength: 4,
+        intelligence: 6,
+        speed: 9,
+        luck: 5
+    }, {
+        name: "Cammy",
+        portrait: "http://i.imgur.com/Lq1H0mc.gif",
+        idleSprite: "http://i.imgur.com/NeWusXQ.gif",
+        description: null,
+        price: "500",
+        strength: 5,
+        intelligence: 7,
+        speed: 8,
+        luck: 6
+    }, {
+        name: "Spiderman",
+        portrait: "http://i.imgur.com/fL105m0.png",
+        idleSprite: "http://i.imgur.com/Lb7LhFZ.gif",
+        description: null,
+        price: "2000",
+        strength: 7,
+        intelligence: 9,
+        speed: 9,
+        luck: 2
+    }, {
+        name: "Makoto",
+        portrait: "http://i.imgur.com/RjjRSeR.gif",
+        idleSprite: "http://i.imgur.com/G7XWyDz.gif",
+        description: null,
+        price: "600",
+        strength: 5,
+        intelligence: 6,
+        speed: 8,
+        luck: 5
     }],
     category: [{
         type: 'Game',
@@ -156,146 +196,180 @@ var data = {
         last_name: 'Mcuserson'
     }],
 };
+
 function rand(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var seedReviews = function(){
-  var rows = [{
-          rating: 5,
-          description: 'LUV DAT RYU',
-          userId: 1,
-          characterId: 1
-      }, {
-          rating: 1,
-          description: 'YUCKY',
-          userId: 1,
-          characterId: 1
-      }]
-      return Promise.all(rows.map(function (userObj) {
-          return Review.create(userObj);
-      }));
+var seedReviews = function() {
+    var rows = [{
+        rating: 5,
+        description: 'LUV DAT RYU',
+        userId: 1,
+        characterId: 1
+    }, {
+        rating: 1,
+        description: 'YUCKY',
+        userId: 1,
+        characterId: 1
+    }]
+    return Promise.all(rows.map(function(userObj) {
+        return Review.create(userObj);
+    }));
 }
-var seedCharacterCategory = function(){
-  var rows = [{
-      characterId: 1,
-      categoryId: 1
-  }, {
-      characterId: 1,
-      categoryId: 2
-  }, {
-      characterId: 1,
-      categoryId: 3
-  }, {
-      characterId: 1,
-      categoryId: 4
-  }, {
-      characterId: 1,
-      categoryId: 5
-  }, {
-      characterId: 1,
-      categoryId: 6
-  }, {
-      characterId: 1,
-      categoryId: 7
-  }, {
-      characterId: 1,
-      categoryId: 10
-  }, {
-      characterId: 2,
-      categoryId: 2
-  }, {
-      characterId: 2,
-      categoryId: 3
-  }, {
-      characterId: 2,
-      categoryId: 4
-  }, {
-      characterId: 2,
-      categoryId: 5
-  }, {
-      characterId: 2,
-      categoryId: 6
-  }, {
-      characterId: 2,
-      categoryId: 1
-  }, {
-      characterId: 2,
-      categoryId: 11
-  }, {
-      characterId: 3,
-      categoryId: 1
-  }, {
-      characterId: 3,
-      categoryId: 2
-  }, {
-      characterId: 3,
-      categoryId: 3
-  }, {
-      characterId: 3,
-      categoryId: 4
-  }, {
-      characterId: 3,
-      categoryId: 5
-  }, {
-      characterId: 3,
-      categoryId: 6
-  }, {
-      characterId: 3,
-      categoryId: 8
-  }, {
-      characterId: 3,
-      categoryId: 10
-  }]
-  return Promise.all(rows.map(function (userObj) {
-      return db.model('CharacterCategory').create(userObj);
-  }));
+var seedCharacterCategory = function() {
+    var rows = [{
+        characterId: 1,
+        categoryId: 1
+    }, {
+        characterId: 1,
+        categoryId: 2
+    }, {
+        characterId: 1,
+        categoryId: 3
+    }, {
+        characterId: 1,
+        categoryId: 4
+    }, {
+        characterId: 1,
+        categoryId: 5
+    }, {
+        characterId: 1,
+        categoryId: 6
+    }, {
+        characterId: 1,
+        categoryId: 7
+    }, {
+        characterId: 1,
+        categoryId: 10
+    }, {
+        characterId: 2,
+        categoryId: 2
+    }, {
+        characterId: 2,
+        categoryId: 3
+    }, {
+        characterId: 2,
+        categoryId: 4
+    }, {
+        characterId: 2,
+        categoryId: 5
+    }, {
+        characterId: 2,
+        categoryId: 6
+    }, {
+        characterId: 2,
+        categoryId: 1
+    }, {
+        characterId: 2,
+        categoryId: 11
+    }, {
+        characterId: 3,
+        categoryId: 1
+    }, {
+        characterId: 3,
+        categoryId: 2
+    }, {
+        characterId: 3,
+        categoryId: 3
+    }, {
+        characterId: 3,
+        categoryId: 4
+    }, {
+        characterId: 3,
+        categoryId: 5
+    }, {
+        characterId: 3,
+        categoryId: 6
+    }, {
+        characterId: 3,
+        categoryId: 8
+    }, {
+        characterId: 3,
+        categoryId: 10
+    }]
+    return Promise.all(rows.map(function(userObj) {
+        return db.model('CharacterCategory').create(userObj);
+    }));
 };
 
-var seedCharacterOrders = function () {
-    var rows = [
-      {characterId: 1, orderId: 1},
-      {characterId: 2, orderId: 1},
-      {characterId: 3, orderId: 1},
-      {characterId: 4, orderId: 1},
-      {characterId: 5, orderId: 2},
-      {characterId: 6, orderId: 2},
-      {characterId: 7, orderId: 2},
-      {characterId: 8, orderId: 2},
-    ];
-    return Promise.all(rows.map(function (userObj) {
+var seedCharacterOrders = function() {
+    var rows = [{
+        characterId: 1,
+        orderId: 1
+    }, {
+        characterId: 2,
+        orderId: 1
+    }, {
+        characterId: 3,
+        orderId: 1
+    }, {
+        characterId: 4,
+        orderId: 1
+    }, {
+        characterId: 5,
+        orderId: 2
+    }, {
+        characterId: 6,
+        orderId: 2
+    }, {
+        characterId: 7,
+        orderId: 2
+    }, {
+        characterId: 8,
+        orderId: 2
+    }, ];
+    return Promise.all(rows.map(function(userObj) {
         return db.model('CharacterOrder').create(userObj);
     }));
 
 };
 
-var seedOrders = function () {
+var seedOrders = function() {
 
-    var rows = [
-      { status: 'delivered', userId: '2'},
-      { status: 'approved', userId: '2'},
-      { status: 'pending', userId: '2'},
-      { status: 'delivered', userId: '2'},
-      { status: 'delivered', userId: '2'}
-    ];
-    return Promise.all(rows.map(function (userObj) {
+    var rows = [{
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'approved',
+        userId: '2'
+    }, {
+        status: 'pending',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }];
+    return Promise.all(rows.map(function(userObj) {
         return Order.create(userObj);
     }));
 
 };
-var seedOrders = function () {
+var seedOrders = function() {
 
-    var rows = [
-      { status: 'delivered', userId: '2'},
-      { status: 'approved', userId: '2'},
-      { status: 'pending', userId: '2'},
-      { status: 'delivered', userId: '2'},
-      { status: 'delivered', userId: '2'}
-    ];
+    var rows = [{
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'approved',
+        userId: '2'
+    }, {
+        status: 'pending',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }];
 
-    var creatingCharacterOrders = rows.map(function (userObj) {
+    var creatingCharacterOrders = rows.map(function(userObj) {
         return Order.create(userObj);
     });
 
@@ -315,8 +389,11 @@ db.sync({
         });
     })
 
-    .then(function(){
-      return Order.create({status: 'pending', userId: '2'});
+.then(function() {
+        return Order.create({
+            status: 'pending',
+            userId: '2'
+        });
     })
     .then(() => seedOrders())
     .then(() => seedReviews())

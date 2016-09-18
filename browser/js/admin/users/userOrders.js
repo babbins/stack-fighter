@@ -4,8 +4,8 @@ app.config(function($stateProvider){
         templateUrl: 'js/admin/users/userOrders.html',
         controller: 'AdminUserOrdersCtrl',
         resolve: {
-            userOrders : function(OrderFactory){
-                return UserFactory.getAll();
+            userOrders : function(OrderFactory, $stateParams){
+                return OrderFactory.getUserOrders($stateParams.id);
             }
         }
     });
@@ -14,10 +14,11 @@ app.config(function($stateProvider){
 app.controller('AdminUserOrdersCtrl', function($scope, userOrders, OrderFactory){
     $scope.userOrders = userOrders;
     $scope.deleteOrder = function(order){
-        UserFactory.deleteOrder(order.id)
+        OrderFactory.deleteOrder(order.id)
         .then(function(success){
             console.log('Order Deleted!');
-            $scope.userOrders.splice($scope.userOrders.indexOf(order, 1));
+            console.log($scope.userOrders);
+            $scope.userOrders.splice($scope.userOrders.indexOf(order),1);
         });
     };
 });
