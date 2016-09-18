@@ -1,5 +1,9 @@
-app.controller('CharacterSelectCtrl', function($scope, characters, categories, characterFactory, CategoryFactory, $state) {
-
+app.controller('CharacterSelectCtrl', function($scope, characters, categories, characterFactory, CategoryFactory, $state, $sessionStorage) {
+  $scope.$storage = $sessionStorage;
+  if (!$sessionStorage.cart) $sessionStorage.cart = [];
+  $scope.$storage.cart = $sessionStorage.cart
+  $scope.$storage.total = $sessionStorage.total
+  $sessionStorage.total = 0
   $scope.categories = categories;
 
   $scope.activeFilter = [];
@@ -75,8 +79,8 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
   };
 
   $scope.addToCart = function(quantity, character) {
-    console.log("This Button was pressed yo!", quantity, character);
-    console.log($scope.activeFilter);
+    $sessionStorage.cart.push(character)
+    $sessionStorage.total += Number(character.price)
   };
 
   $scope.addFilters = function() {
