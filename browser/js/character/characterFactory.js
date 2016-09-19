@@ -12,17 +12,11 @@ app.factory('characterFactory', function($http){
   charObj.getRevsById = function(id) {
     return $http.get('/api/reviews/?character=' + id).then(res => res.data);
   }
+  charObj.removeRev = function(id){
+    return $http.delete('/api/reviews' + id).then(res => res.data);
+  }
   charObj.create = function(data) {
-    return $http.post('/api/reviews', data).then(res => res.data);
-  }
-  charObj.createChar = function(data){
-    return $http.post('/api/characters', data).then(res => res.data);
-  }
-  charObj.removeChar = function(id) {
-    return $http.delete('/api/characters/' + id).then(res => res.data);
-  }
-  charObj.updateChar = function(id, data){
-    return $http.put('/api/characters/' + id, data).then(res => res.data);
+    return $http.post('/api/reviews', data)
   }
   return charObj
 })

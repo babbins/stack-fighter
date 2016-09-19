@@ -23,7 +23,7 @@
         </div>
         <h5>Reviews</h5>
         <div ng-repeat="review in reviews">
-          <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="removeReview(review)"></button>
+          <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="removeReview(review.id)"></button>
           <p>Rating: {{review.rating}}</p>
           <p>"{{review.description}}" - {{review.user.first_name + " " + review.user.last_name}}</p>
         </div>
