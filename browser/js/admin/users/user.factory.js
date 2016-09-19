@@ -4,6 +4,10 @@ app.factory('UserFactory', function($http){
             return $http.get('/api/users/')
             .then(res => res.data);
         },
+        update: function(id, update){
+            return $http.put('/api/users/' + id, update)
+            .then(res => res.data);
+        },
         deleteUser: function(id){
             return $http.delete('/api/users/'+id)
             .then(res => res.data);

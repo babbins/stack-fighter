@@ -6,6 +6,17 @@ app.config(function ($stateProvider) {
         controller: 'LoginCtrl'
     });
 
+    $stateProvider.state('resetPassword', {
+      url: '/resetPassword/:id',
+      templateUrl: 'js/login/resetPassword.html',
+      controller: 'ResetCtrl',
+      resolve: {
+        id: function($stateParams){
+          return $stateParams.id;
+        }
+      }
+    })
+
 });
 
 app.controller('LoginCtrl', function ($scope, AuthService, $state) {
@@ -16,9 +27,14 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
     $scope.sendLogin = function (loginInfo) {
 
         $scope.error = null;
-
-        AuthService.login(loginInfo).then(function () {
+        AuthService.login(loginInfo).then(function (userOrId) {
+          console.log(userOrId);
+          if (typeof userOrId === 'object'){
             $state.go('home');
+          }
+          else {
+            $state.go('resetPassword', {id: userOrId});
+          }
         }).catch(function () {
             $scope.error = 'Invalid login credentials.';
         });
@@ -26,3 +42,16 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
     };
 
 });
+
+app.controller('ResetCtrl', function($scope, $state, id, UserFactory, $log){
+  console.log(id);
+  $scope.resetPassword = function(password){
+    UserFactory.update(id, {password: password, passwordReset: false})
+    .then(function(){
+      console.log('Password successfully updated!');
+      $state.go('login');
+    })
+    .catch($log);
+  }
+
+})
