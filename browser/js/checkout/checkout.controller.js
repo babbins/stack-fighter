@@ -1,6 +1,5 @@
-app.controller('CheckoutCtrl', function($scope, $sessionStorage, checkoutFactory){
-  $scope.characters = $sessionStorage.cart
-  $scope.total = $sessionStorage.total
+app.controller('CheckoutCtrl', function($scope, $localStorage, checkoutFactory){
+  $scope.$storage = $localStorage
   $scope.placeOrder = function(characters) {
     var characterIds = [];
     for (var index = 0; index < characters.length; index++) {
@@ -8,5 +7,13 @@ app.controller('CheckoutCtrl', function($scope, $sessionStorage, checkoutFactory
       characterIds.push(element.id)
     }
     checkoutFactory.placeOrder({characters: characterIds})
+  }
+  $scope.clearCart = checkoutFactory.clearCart
+  $scope.changeQuantity = function(character, change) {
+    checkoutFactory.changeQuantity(character, change)
+
+  }
+  $scope.clearChar = function(character) {
+    checkoutFactory.clearChar(character)
   }
 })
