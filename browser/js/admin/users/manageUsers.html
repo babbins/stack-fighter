@@ -5,9 +5,10 @@
     <li class="list-group-item">
     <h5>{{user.email}}</h5>
     <h5 ng-show = "user.isAdmin">Administrator</h5>
-     <button class="userOrders btn-success" id="wtf2" ui-sref='userOrders(user)'>User Orders</button>
-    <button class="modifyUser btn-warning" id="wtf2" ui-sref='modifyUser(user)'>Modify User</button>
+    <button class="userOrders btn-success" id="wtf2" ui-sref='userOrders(user)'>User Orders</button>
     <button class="deleteUser btn-danger" id="wtf2" ng-click='deleteUser(user)'>Delete User</button>
+    <button class="adminPrivilegeToggle btn-warning" id="wtf2" ng-click='toggleAdmin(user)'>Toggle Admin Status</button>
+    <button class="adminPrivilegeToggle btn-warning" id="wtf2" ng-click='x(user)'>Toggle Admin Status</button>
     </li>
 </div>
 </div>

@@ -7,6 +7,10 @@ app.factory('UserFactory', function($http){
         deleteUser: function(id){
             return $http.delete('/api/users/'+id)
             .then(res => res.data);
+        },
+        toggleAdmin: function(user){
+            return $http.put('/api/users/'+user.id, {isAdmin: !user.isAdmin})
+            .then(res => res.data);
         }
     };
 });
