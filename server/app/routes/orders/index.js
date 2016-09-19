@@ -48,7 +48,7 @@ router.delete('/:id', function(req, res, next){
 });
 
 router.get('/user/:userId', function(req, res, next){
-  Order.findAll({where: { userId: req.params.userId }, include: [Character] })
+  Order.findAll({where: { userId: req.params.userId }, include: [Character], order: "id DESC" })
   .then(orders => res.send(orders))
   .catch(next);
 });
