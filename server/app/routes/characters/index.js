@@ -28,7 +28,6 @@ router.post('/', function(req, res, next){
 
   if (req.body.categories){
     var categories = req.body.categories;
-    console.log(categories);
     delete req.body.categories;
   }
   var character;
@@ -42,18 +41,12 @@ router.post('/', function(req, res, next){
 })
 
 router.put('/:id', function(req, res, next){
-  if (req.body.categories){
-    var categories = req.body.categories;
-    delete req.body.categories;
-  }
-  var character;
+  var char = req.body[0];
+  var categories = req.body[1];
   Character.findById(req.params.id)
-  .then(foundCharacter => foundCharacter.update(req.body))
-  .then(updatedCharacter => {
-    character = updatedCharacter;
-    return updatedCharacter.setCategories(categories);
-  })
-  .then(() => res.send(character))
+  .then(foundCharacter => foundCharacter.update(char))
+  .then(updatedCharacter => updatedCharacter.setCategories(categories))
+  .then(() => res.send(char))
   .catch(next)
 })
 

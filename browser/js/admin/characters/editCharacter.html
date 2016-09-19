@@ -1,9 +1,8 @@
-<h1> Add Character</h1>
-<form id="character-form" name="characterForm" ng-submit="createCharacter(character)">
+<form id="character-form" name="characterForm" ng-submit="updateCharacter(character)">
     <alert type="danger" ng-show="error">
         {{ error }}
     </alert>
-    <h3>Basic Info</h3>
+    <h3>Edit</h3>
     <div class="form-group">
         <label for="name">Name</label>
         <input type="text" ng-model="character.name" class="form-control" id="name" placeholder="Ryu">
@@ -22,7 +21,7 @@
     </div>
     <div class="form-group">
         <label for="price">Price</label>
-        <input type="number" ng-model="character.price" class="form-control" id="price" placeholder="USD">
+        <input type="text" ng-model="character.price" class="form-control" id="price" placeholder="USD">
     </div>
     <h3>Stats</h3>
     <div class="col-xs-3">
@@ -43,12 +42,19 @@
     </div>
     <h3>Categories</h3>
     <div class="row">
-      <div class='col-xs-4' ng-repeat='category in categories'>
-           <select data-toggle="select" class="form-control select select-inverse" ng-model='character.categories[$index]'>
+      <div class='col-xs-4' ng-repeat='category in allCategories'>
+           <select data-toggle="select" class="form-control select select-inverse" ng-model='character.newCategories[$index]'>
              <option value=''>{{category[0]}}</option>
-             <option ng-repeat="option in category" ng-if="option!=category[0]" value={{option.id}}>{{option.value}}</option>
+             <option ng-repeat="option in category" ng-if="option!=category[0]" value={{option["id"]}}>{{option.value}}</option>
            </select>
       </div>
+      <button ng-click="addCategories()" type="button" class="btn btn-warning" id="addCategories">Add Category(s)</button>
     </div>
-  <button type="submit" class="btn btn-success">Create</button>
+    <div class="row">
+      <div class='activeFilters 'ng-repeat="category in editCategories">
+        <h7>{{category.value}}</h7>
+        <button class='round btn-danger glyphicon glyphicon-remove' ng-click='removeCategory($index) '/>
+      </div>
+    </div>
+  <button type="submit" class="btn btn-primary">Update</button>
 </form>
