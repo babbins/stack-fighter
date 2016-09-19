@@ -54,7 +54,7 @@ app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFac
     $scope.character.newCategories = [];
   }
   $scope.removeReview = function(id){
-    characterFactory.removeRevs(id).then($state.go('adminCharacterDetail', {id: character.id}, {reload: true}));
+    characterFactory.removeRev(id).then($state.go('adminCharacterDetail', {id: character.id}, {reload: true}));
   }
   $scope.updateCharacter = function(charToUpdate){
     delete charToUpdate.categories;
