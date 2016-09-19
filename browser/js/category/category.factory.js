@@ -32,6 +32,12 @@ app.factory('CategoryFactory', function($http){
     },
     getAll: function(){
       return $http.get('/api/categories').then(res => res.data);
+    },
+    create: function(category){
+      return $http.post('/api/categories', category).then(res => res.data);
+    },
+    remove: function(id){
+      return $http.delete('/api/categories/' + id).then(res => res.data);
     }
   }
 });

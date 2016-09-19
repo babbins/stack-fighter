@@ -1,0 +1,17 @@
+
+<button class="btn btn-success gylphicon glyphicon-plus" ui-sref="adminCategories.add"> Add Category</button>
+
+<ui-view></ui-view>
+<div class="container">
+  <div class="row">
+    <div class="well">
+      <div ng-repeat="categoryType in categories">
+        <h3>{{categoryType[0]}}</h3>
+        <div ng-repeat="category in categoryType.slice(1)">
+          {{category.value}}
+          <button ng-click="deleteCategory(category.id)" class="btn btn-danger glyphicon glyphicon-remove"></button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
