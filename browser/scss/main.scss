@@ -15,7 +15,6 @@ body {
 }
 
 #main {
-  padding-top: 60px;
   margin: 0 auto;
 }
 
@@ -30,3 +29,4 @@ body {
 @import 'login/main';
 @import 'character/main';
 @import 'signup/main';
+@import 'admin/main';

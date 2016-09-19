@@ -4,9 +4,13 @@
   float: left;
   margin: 5px;
   border: 1px solid transparent;
+
+  .active{
+  border: 1px solid transparent;
   &:hover {
       border:1px solid red;
-    }
+  }
+  }
 
   img {
     display: block;
@@ -25,7 +29,8 @@
 }
 
 .pricebar{
-  margin: 10px
+  margin: 10px;
+  float: center;
 }
 
 #portrait {
@@ -58,5 +63,11 @@
 }
 
 .inactive {
-  opacity: .5;
+  border: 1px solid transparent;
+  opacity: .25;
 }
+
+#admin-panel {
+  margin-top: 50px;
+}
+

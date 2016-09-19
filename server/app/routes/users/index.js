@@ -2,10 +2,12 @@
 var router  = require('express').Router();
 
 var User = require('../../../db/models/user.js');
+var adminTest = require('../../configure/authorization').adminTest;
 
 module.exports = router;
 
 router.get('/', function(req, res, next){
+    if (!adminTest(req)) return res.send(401);
     User.findAll({})
     .then(allUsers => res.send(allUsers))
     .catch(next)
@@ -40,6 +42,9 @@ router.put('/:id', function(req, res, next){
 
 
 router.delete('/:id', function(req, res, next){
+    if(!req.user.isAdmin){
+        res.sendStatus(401);
+    }
     User.findById(req.params.id)
     .then(foundToDelete => foundToDelete.destroy())
     .then(() => res.status(204).send('destroyed'))

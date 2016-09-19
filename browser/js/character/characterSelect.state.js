@@ -8,7 +8,7 @@ app.config(function ($stateProvider){
         return characterFactory.getAll();
       },
       categories: function(CategoryFactory){
-        return CategoryFactory.fetchAll();
+        return CategoryFactory.getAll();
       }
     }
   });

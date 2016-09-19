@@ -8,7 +8,7 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
 
   $scope.activeFilter = [];
 
-  $scope.sortedCategories = CategoryFactory.separateTypes($scope.categories);
+  $scope.sortedCategories = CategoryFactory.separate($scope.categories);
 
   $scope.characters = characters;
 

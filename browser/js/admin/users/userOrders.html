@@ -1,0 +1,23 @@
+<div class='container'>
+<div class='col-xs-offset-2 col-xs-5'>
+<h1>Orders</h1>
+<ul class='list-group' ng-repeat="order in userOrders">
+    <li class="list-group-item">
+    <h4> Order Status: {{order.status}} </h4>
+        <ul ng-repeat='character in order.characters'>
+          <li>{{character.name}}</li>
+        </ul>
+    <br>
+    <button class="deleteorder btn-danger" id="wtf2" ng-click='deleteOrder(order)'>Delete order</button>
+    <button class="modifyorder btn-warning" id="wtf2" ng-click=' modOrder ? modOrder = false : modOrder = true'>Modify order</button>
+    <br>
+    <select ng-show="modOrder" ng-hide="!modOrder" data-toggle="select" class="form-control select select-inverse mrs mbm" ng-model='selected' ng-change="changeStatus(order, selected)">
+        <option value=''>Status</option>
+        <option value='pending'>pending</option>
+        <option value='approved'>approved</option>
+        <option value='delivered'>delivered</option>
+    </select>
+    </li>
+</div>
+</div>
+</div>

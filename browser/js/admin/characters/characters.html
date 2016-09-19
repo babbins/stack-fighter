@@ -1,0 +1,15 @@
+<div class="container">
+  <h1>Manage Characters</h1>
+  <div class="row">
+    <button class="btn btn-success glyphicon glyphicon-plus" ui-sref="addCharacter">Add Character</button>
+  </div>
+  <div class="row">
+    <div class="col-xl-3 col-md-4 col-xs-12 well" ng-repeat= "character in characters">
+      <div ui-sref="adminCharacterDetail({id: character.id})"
+        <p>{{character.name}}</p>
+        <img ng-src="{{character.portrait}}"/>
+        <p>Price: ${{character.price}}</p>
+      </div>
+    </div>
+  </div>
+</div>
