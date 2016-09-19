@@ -37,6 +37,7 @@ app.controller('AdminManageUsersCtrl', function($scope, users, UserFactory, $sta
             $state.reload();
         });
     };
+    
 
     $scope.loggedUser = loggedUser;
 

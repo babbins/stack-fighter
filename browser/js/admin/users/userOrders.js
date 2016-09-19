@@ -11,7 +11,7 @@ app.config(function($stateProvider){
     });
 });
 
-app.controller('AdminUserOrdersCtrl', function($scope, userOrders, OrderFactory){
+app.controller('AdminUserOrdersCtrl', function($scope, $state, userOrders, OrderFactory){
     $scope.userOrders = userOrders;
     $scope.deleteOrder = function(order){
         OrderFactory.deleteOrder(order.id)
@@ -19,6 +19,13 @@ app.controller('AdminUserOrdersCtrl', function($scope, userOrders, OrderFactory)
             console.log('Order Deleted!');
             console.log($scope.userOrders);
             $scope.userOrders.splice($scope.userOrders.indexOf(order),1);
+        });
+    };
+    $scope.changeStatus = function(order, selected){
+        OrderFactory.modifyOrder(order.id, {status: selected})
+        .then(function(success){
+            console.log('Changed Order!');
+            $state.reload();
         });
     };
 });
