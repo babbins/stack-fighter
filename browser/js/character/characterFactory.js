@@ -18,5 +18,11 @@ app.factory('characterFactory', function($http){
   charObj.createChar = function(data){
     return $http.post('/api/characters', data).then(res => res.data);
   }
+  charObj.removeChar = function(id) {
+    return $http.delete('/api/characters/' + id).then(res => res.data);
+  }
+  charObj.updateChar = function(id, data){
+    return $http.put('/api/characters/' + id, data).then(res => res.data);
+  }
   return charObj
 })

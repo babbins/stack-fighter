@@ -8,9 +8,8 @@
       <div ui-sref="adminCharacterDetail({id: character.id})"
         <p>{{character.name}}</p>
         <img ng-src="{{character.portrait}}"/>
-        <p>{{character.price}}</p>
+        <p>Price: ${{character.price}}</p>
       </div>
-      <p ng-repeat = "category in character.categories">{{category.value}}</p>
     </div>
   </div>
 </div>

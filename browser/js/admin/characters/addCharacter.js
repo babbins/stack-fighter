@@ -5,17 +5,16 @@ app.config(function($stateProvider){
     controller: 'AdminAddCharacterCtrl',
     resolve: {
       categories: function(CategoryFactory){
-        return CategoryFactory.fetchAll();
+        return CategoryFactory.getAll().then(CategoryFactory.separate);
       }
     }
   });
 });
 
 app.controller('AdminAddCharacterCtrl', function($scope, $state, characterFactory, CategoryFactory, categories){
-  $scope.categories = CategoryFactory.separateTypes(categories);
+  $scope.categories = categories;
 
   $scope.createCharacter = function(character){
-    console.log(character.categories);
     if(character.categories){
       var categoryIds = [];
       for(var key in character.categories){

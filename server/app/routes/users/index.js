@@ -2,10 +2,12 @@
 var router  = require('express').Router();
 
 var User = require('../../../db/models/user.js');
+var adminTest = require('../../configure/authorization').adminTest;
 
 module.exports = router;
 
 router.get('/', function(req, res, next){
+    if (!adminTest(req)) return res.send(401);
     User.findAll({})
     .then(allUsers => res.send(allUsers))
     .catch(next)

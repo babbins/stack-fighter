@@ -33,7 +33,7 @@
   </div>
   <div class="row">
     <div class='col-xs-3' ng-repeat='category in sortedCategories'>
-      <select data-toggle="select" class="form-control select select-inverse mrs mbm" ng-model='selected' ' ng-change="addFilter(selected)">
+      <select data-toggle="select" class="form-control select select-inverse mrs mbm" ng-model='selected' ng-change="addFilter(selected)">
         <option value=''>{{category[0]}}</option>
         <option ng-repeat="option in category" ng-if="option!=category[0]" value={{option}}>{{option.value}}</option>
       </select>
