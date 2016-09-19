@@ -18,7 +18,12 @@ router.get('/:id', function(req, res, next){
 })
 
 router.post('/', function(req, res, next){
-  purchasedCharacter.create(req.body) //FIND OR CREATE??
+    req.body.forEach(function(character){
+        var newPurchasedCharacter = character;
+        delete newPurchasedCharacter.createdAt;
+        delete newPurchasedCharacter.updatedAt;
+        purchasedCharacter.findOrCreate(character)
+    })
   .then(createdCharacter => res.send(createdCharacter))
   .catch(next)
 })

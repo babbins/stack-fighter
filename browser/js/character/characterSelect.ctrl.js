@@ -6,8 +6,6 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
   if (!$localStorage.total) $localStorage.total = 0
   $scope.categories = categories;
 
-  $scope.checkout = checkoutFactory.checkout($storage.cart);
-
   $scope.activeFilter = [];
 
   $scope.sortedCategories = CategoryFactory.separateTypes($scope.categories);

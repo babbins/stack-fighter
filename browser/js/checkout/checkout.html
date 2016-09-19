@@ -11,7 +11,7 @@
       </div>
       <h1>${{$storage.total}}</h1>
       <button type="button" class="btn btn-danger" ng-click="clearCart()">Clear Cart</button>
-      <button type="button" class="btn btn-default" ng-click="placeOrder(characters)">Place Order</button>
+      <button type="button" class="btn btn-default" ng-click="placeOrder($storage.cart)">Place Order</button>
 
     </div>
 

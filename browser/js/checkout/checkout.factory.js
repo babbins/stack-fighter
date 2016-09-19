@@ -3,16 +3,14 @@ app.factory('checkoutFactory', function($http, $state, $localStorage){
   checkoutObj.placeOrder = function(orderData) {
     $http.post('api/orders', orderData)
     .then(() => {
-      $localStorage.cart = [];
-      $localStorage.total = 0;
-      $state.go('myOrders');
+        return $http.post('api/orders', orderData)
     })
-  }
-  checkoutObj.checkout = function(storage){
-      console.log(storage);
-    //   storage.cart;
-    //   storage.total;
-  }
+    .then(() => {
+        $localStorage.cart = [];
+        $localStorage.total = 0;
+        $state.go('myOrders');
+    })
+};
 
   checkoutObj.clearCart = function() {
     $localStorage.cart = []
