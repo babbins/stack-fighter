@@ -57,7 +57,7 @@ app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFac
     var data = [charToUpdate, $scope.editCategories];
     characterFactory.updateChar(character.id, data)
     .then(updatedChar => {
-      $state.go('characterDetail', {id: updatedChar.id});
+      $state.go('adminCharacterDetail', {id: updatedChar.id}, {reload: true});
     })
     .catch(console.error.bind(console));
   };
