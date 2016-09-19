@@ -18,8 +18,10 @@ router.get('/', function(req, res, next){
 });
 
 router.post('/', function(req, res, next){
-  Order.create(req.body)
-  .then(order => res.status(201).send(order))
+  Order.create({ status: 'pending'})
+  .then(order => order.setUser(req.user.id))
+  .then(order => order.setCharacters(req.body.characters))
+  .then(() => res.end())
   .catch(next);
 });
 
