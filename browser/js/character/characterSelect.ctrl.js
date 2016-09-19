@@ -1,9 +1,9 @@
-app.controller('CharacterSelectCtrl', function($scope, characters, categories, characterFactory, CategoryFactory, $state, $sessionStorage) {
-  $scope.$storage = $sessionStorage;
-  if (!$sessionStorage.cart) $sessionStorage.cart = [];
-  $scope.$storage.cart = $sessionStorage.cart
-  $scope.$storage.total = $sessionStorage.total
-  if (!$sessionStorage.total) $sessionStorage.total = 0
+app.controller('CharacterSelectCtrl', function($scope, characters, categories, characterFactory, CategoryFactory, $state, $localStorage, checkoutFactory) {
+  $scope.$storage = $localStorage;
+  if (!$localStorage.cart) $localStorage.cart = [];
+  $scope.$storage.cart = $localStorage.cart
+  $scope.$storage.total = $localStorage.total
+  if (!$localStorage.total) $localStorage.total = 0
   $scope.categories = categories;
 
   $scope.activeFilter = [];
@@ -11,8 +11,6 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
   $scope.sortedCategories = CategoryFactory.separate($scope.categories);
 
   $scope.characters = characters;
-
-  console.log($scope.characters);
 
   $scope.selectedCharacter = characters[0];
 
@@ -79,10 +77,23 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
   };
 
   $scope.addToCart = function(quantity, character) {
-    $sessionStorage.cart.push(character)
-    $sessionStorage.total += Number(character.price)
+    quantity = Number(quantity)
+    var charIdx = $localStorage.cart.indexOf(character)
+    if (charIdx === -1) {
+      character.quantity = quantity
+      $localStorage.cart.push(character)
+    } else {
+      $localStorage.cart[charIdx].quantity += quantity
+    }
+    $localStorage.total += Number(character.price) * quantity
   };
-
+  $scope.clearCart = checkoutFactory.clearCart
+  $scope.changeQuantity = function(character, change) {
+    checkoutFactory.changeQuantity(character, change)
+  }
+  $scope.clearChar = function(character) {
+    checkoutFactory.clearChar(character)
+  }
   $scope.addFilters = function() {
     console.log("Adding these filters! : ", $scope.activeFilter);
   }

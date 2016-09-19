@@ -3,11 +3,14 @@
   <div class="row">
 
     <div class="col-xs-8 col-offset-xs-2 well">
-      <div ng-repeat="character in characters">
-        <h1>{{character.name}}:${{character.price}}</h1>
+      <div ng-repeat="character in $storage.cart">
+        <h1>{{character.name}}:${{character.price * character.quantity}}</h1>
+        <button type="button" class="btn btn-default glyphicon glyphicon-plus" ng-click="changeQuantity(character, 1)"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-minus" ng-click="changeQuantity(character, -1)"></button>
+        <button type="button" class="btn btn-default glyphicon glyphicon-remove" ng-click="clearChar(character)"></button>
       </div>
-      <h1>${{total}}</h1>
-
+      <h1>${{$storage.total}}</h1>
+      <button type="button" class="btn btn-danger" ng-click="clearCart()">Clear Cart</button>
       <button type="button" class="btn btn-default" ng-click="placeOrder(characters)">Place Order</button>
 
     </div>
