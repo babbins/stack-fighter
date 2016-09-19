@@ -42,6 +42,9 @@ router.put('/:id', function(req, res, next){
 
 
 router.delete('/:id', function(req, res, next){
+    if(!req.user.isAdmin){
+        res.sendStatus(401);
+    }
     User.findById(req.params.id)
     .then(foundToDelete => foundToDelete.destroy())
     .then(() => res.status(204).send('destroyed'))

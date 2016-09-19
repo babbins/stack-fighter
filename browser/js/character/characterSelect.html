@@ -51,13 +51,12 @@
         <option ng-repeat="option in category" ng-if="option!=category[0]" value={{option}}>{{option.value}}</option>
       </select>
     </div>
-    <button ng-click="filter()" type="button" class="btn btn-warning" id="addFilters">Add Filter(s)</button>
-    <button ng-click="clearFilter()" tsype="button" class="btn btn-danger" id="clearFilters">Clear Filter(s)</button>
+    <button ng-click="clearFilter()" type="button" class="btn btn-danger" id="clearFilters">Clear Filter(s)</button>
   </div>
   <div class="row">
     <div class="col-xs-12">
       <div class="charSelect row" ng-repeat="character in characters">
-        <div ng-class='{inactive : character.inactive}' ng-mouseover='character.inactive || selectCharacter(character)' ng-click = "character.inactive || go('characterDetail', { id : character.id })">
+        <div ng-class='{active: !character.inactive, inactive : character.inactive}' ng-mouseover='character.inactive || selectCharacter(character)' ng-click = "character.inactive || go('characterDetail', { id : character.id })">
           <img ng-src="{{character.portrait}}">
         </div>
       </div>
