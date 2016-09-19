@@ -11,6 +11,10 @@ app.factory('UserFactory', function($http){
         toggleAdmin: function(user){
             return $http.put('/api/users/'+user.id, {isAdmin: !user.isAdmin})
             .then(res => res.data);
+        },
+        resetPassword: function(user){
+            return $http.put('/api/users/'+user.id, {passwordReset: !user.passwordReset})
+            .then(res => res.data);
         }
     };
 });

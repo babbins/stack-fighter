@@ -6,12 +6,15 @@ app.config(function($stateProvider){
         resolve: {
             users : function(UserFactory){
                 return UserFactory.getAll();
+            },
+            loggedUser : function(AuthService){
+                return AuthService.getLoggedInUser();
             }
         }
     });
 });
 
-app.controller('AdminManageUsersCtrl', function($scope, users, UserFactory, $state){
+app.controller('AdminManageUsersCtrl', function($scope, users, UserFactory, $state, loggedUser){
     $scope.users = users;
     $scope.deleteUser = function(user){
         UserFactory.deleteUser(user.id)
@@ -21,11 +24,20 @@ app.controller('AdminManageUsersCtrl', function($scope, users, UserFactory, $sta
         });
     };
     $scope.toggleAdmin = function(user){
-        console.log("clicked!")
         UserFactory.toggleAdmin(user)
         .then(function(success){
             console.log('User Updated!');
-            $state.$reload();
+            $state.reload();
         });
     };
+    $scope.resetPassword = function(user){
+        UserFactory.resetPassword(user)
+        .then(function(success){
+            console.log('Password reset!');
+            $state.reload();
+        });
+    };
+
+    $scope.loggedUser = loggedUser;
+
 });
