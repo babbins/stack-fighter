@@ -9,6 +9,7 @@ var Character = require('./models/character');
 var Category = require('./models/category');
 var Review = require('./models/review');
 var Cart = require('./models/cart');
+var PurchasedCharacter = require('./models/purchased-character');
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)
 
@@ -23,7 +24,7 @@ Order.belongsTo(User);
 //review now has FK of user
 User.hasMany(Review);
 //review.getUser
-Review.belongsTo(User)
+Review.belongsTo(User);
 
 //character.getCategories
 Character.belongsToMany(Category, {through: 'CharacterCategory'});
@@ -44,6 +45,11 @@ Order.belongsToMany(Character, {through: 'CharacterOrder'});
 Character.belongsToMany(Cart, {through: 'CharacterCart'});
 //character.getCarts WHY!?
 Cart.belongsToMany(Character, {through: 'CharacterCart'});
+
+//PurchasedCharacter
+PurchasedCharacter.belongsToMany(Order, {through: 'PurchasedOrders'});
+
+Order.belongsToMany(PurchasedCharacter, {through: 'PurchasedOrders'});
 
 // if we had more models, we could associate them in this file
 // e.g. User.hasMany(Reports)

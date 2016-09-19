@@ -8,5 +8,11 @@ app.factory('checkoutFactory', function($http, $state, $sessionStorage){
       $state.go('myOrders');
     })
   }
+  checkoutObj.checkout = function(storage){
+      console.log(storage);
+    //   storage.cart;
+    //   storage.total;
+  }
+
   return checkoutObj
 })
