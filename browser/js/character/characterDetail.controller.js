@@ -30,7 +30,6 @@ app.controller('CharacterDetailCtrl', function($scope, character, categories, re
    reviews.forEach(function(review){
        if (!review.userId) review.user = {first_name: 'Anon'}
    })
-   console.log(reviews)
    $scope.reviews = reviews
    $scope.error = ''
    $scope.createReview = function() {
