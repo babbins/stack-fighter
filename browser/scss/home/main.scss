@@ -1,4 +1,6 @@
 #home {
+  background-color: #111189;
+
   fullstack-logo {
     padding-top: 30px;
     width: 150px;
@@ -7,6 +9,11 @@
   h1 {
     margin-top: 40px;
     text-align: center;
+  }
+  img.titleScreen {
+    display: block;
+    margin-left: auto;
+    margin-right: auto
   }
 }
 

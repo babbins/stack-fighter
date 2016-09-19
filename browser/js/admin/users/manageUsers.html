@@ -1,0 +1,16 @@
+<div class='container'>
+<div class='col-xs-offset-2 col-xs-10'>
+<h1>Users</h1>
+<ul class='list-group' ng-repeat="user in users">
+    <li class="list-group-item">
+    <h5>{{user.email}}</h5>
+    <h5 ng-show = "user.passwordReset">Password Reset</h5>
+    <h5 ng-show = "user.isAdmin">Administrator</h5>
+    <button class="userOrders btn-success" id="wtf2" ui-sref='userOrders(user)'>User Orders</button>
+    <button class="deleteUser btn-danger" id="wtf2" ng-click='deleteUser(user)'>Delete User</button>
+    <button ng-show = "user.id!==loggedUser.id" class="adminPrivilegeToggle btn-warning" id="wtf2" ng-click='toggleAdmin(user)'>Toggle Admin Status</button>
+    <button class="resetPassword btn-warning" id="wtf2" ng-click='resetPassword(user)'>Reset Password</button>
+    </li>
+</div>
+</div>
+</div>

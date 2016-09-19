@@ -13,10 +13,5 @@ app.config(function ($stateProvider) {
     });
 });
 
-app.factory('OrderFactory', function($http){
-  return {
-    getUserOrders: function(){
-      return $http.get('/api/orders').then(res => res.data);
-    }
-  }
-})
+
+

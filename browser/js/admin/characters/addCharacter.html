@@ -1,0 +1,54 @@
+<h1> Add Character</h1>
+<form id="character-form" name="characterForm" ng-submit="createCharacter(character)">
+    <alert type="danger" ng-show="error">
+        {{ error }}
+    </alert>
+    <h3>Basic Info</h3>
+    <div class="form-group">
+        <label for="name">Name</label>
+        <input type="text" ng-model="character.name" class="form-control" id="name" placeholder="Ryu">
+    </div>
+    <div class="form-group">
+        <label for="character-description">Description</label>
+        <input type="text" ng-model="character.description" class="form-control" id="character-description" placeholder="Description">
+    </div>
+    <div class="form-group">
+        <label for="character-portrait">Portrait URL</label>
+        <input type="url" ng-model="character.portrait" class="form-control" id="character-portrait" placeholder="http://example.com/example.jpg">
+    </div>
+    <div class="form-group">
+        <label for="sprite">Sprite URL (GIF)</label>
+        <input type="url" ng-model="character.idleSprite" class="form-control" id="sprite" placeholder="http://example.com/example.jpg">
+    </div>
+    <div class="form-group">
+        <label for="price">Price</label>
+        <input type="number" ng-model="character.price" class="form-control" id="price" placeholder="USD">
+    </div>
+    <h3>Stats</h3>
+    <div class="col-xs-3">
+      <label for="strength"> Strength </label>
+      <input type="number" ng-model="character.strength" class = "form-control" placeholder="Range (0-10)">
+    </div>
+    <div class="col-xs-3">
+      <label for="speed">Speed</label>
+      <input type="number" ng-model="character.speed" class = "form-control" placeholder="Range (0-10)">
+    </div>
+    <div class="col-xs-3">
+      <label for="intelligence">Intelligence</label>
+      <input type="number" ng-model="character.intelligence" class = "form-control" placeholder="Range (0-10)">
+    </div>
+    <div class="col-xs-3">
+      <label for="luck">Luck</label>
+      <input type="number" ng-model="character.luck" class = "form-control" placeholder="Range (0-10)">
+    </div>
+    <h3>Categories</h3>
+    <div class="row">
+      <div class='col-xs-4' ng-repeat='category in categories'>
+           <select data-toggle="select" class="form-control select select-inverse" ng-model='character.categories[$index]'>
+             <option value=''>{{category[0]}}</option>
+             <option ng-repeat="option in category" ng-if="option!=category[0]" value={{option.id}}>{{option.value}}</option>
+           </select>
+      </div>
+    </div>
+  <button type="submit" class="btn btn-success">Create</button>
+</form>

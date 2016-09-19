@@ -11,7 +11,7 @@ var data = {
         name: 'Ryu',
         portrait: 'http://i.imgur.com/FOziwVc.gif',
         idleSprite: 'http://i.imgur.com/wtz9sU8.gif',
-        description: 'Ryu made his debut in the first Street Fighter as the primary playable character in the Game, with his best friend, rival, and sparring partner Ken Masters serving as the second player\'s character. Both compete in the tournament depicted in the Game in order to test their strength against the tournament\'s champion, Sagat.',
+        description: 'As a young boy, Ryu was an orphan and had no memories of his parents. He is adopted and raised by Gouken in a secluded dojo, and is intensely trained in Gouken\'s style of martial arts. A few years later, Gouken started training his best friend\'s son, Ken Masters, at the dojo. Ryu and Ken quickly became good friends and trained together daily. Still to this day, Ryu looks to Gouken as a father, and considers Ken to be his best friend and surrogate brother. When Ryu turned 23, Gouken believes that Ryu\'s training is complete, and Ryu leaves the dojo. Ryu wants to test and hone his martial skills, and set out to challenge the best fighters around the world.',
         price: '500.00',
         strength: '7',
         intelligence: '6',
@@ -21,7 +21,7 @@ var data = {
         name: 'Chun-Li',
         portrait: 'http://i.imgur.com/tkTMk4D.gif',
         idleSprite: 'http://i.imgur.com/nKn9gC5.gif',
-        description: ' In the series, she is an expert martial artist and Interpol officer who restlessly seeks revenge for the death of her father at the hands of the nefarious M. Bison, leader of the Shadaloo crime syndicate.',
+        description: ' Chun-Li is an expert martial artist and Interpol officer who restlessly seeks revenge for the death of her father at the hands of the nefarious M. Bison, leader of the Shadaloo crime syndicate.',
         price: '500.00',
         strength: '6',
         intelligence: '5',
@@ -31,7 +31,7 @@ var data = {
         name: 'Sagat',
         portrait: 'http://i.imgur.com/OmGgwTW.gif',
         idleSprite: 'http://i.imgur.com/o8QA5bL.gif',
-        description: 'Sagat is depicted as a well-renowned muay thai expert known for his incredible power. He is often called the "Emperor of Muay Thai" in his home country. It is possible he was named after Sagat Petchyindee.',
+        description: 'Sagat is a well-renowned muay thai expert known for his incredible power. He is often called the "Emperor of Muay Thai" in his home country. It is possible he was named after Sagat Petchyindee.',
         price: '500.00',
         strength: '6',
         intelligence: '5',
@@ -107,6 +107,66 @@ var data = {
         intelligence: '3',
         speed: '5',
         luck: '5'
+    }, {
+        name: "Ibuki",
+        portrait: "http://i.imgur.com/XO9F9iA.jpg",
+        idleSprite: "http://i.imgur.com/vHDGXtw.gif",
+        description: 'Ibuki is a kick-ass ninja.',
+        price: "750",
+        strength: 4,
+        intelligence: 6,
+        speed: 9,
+        luck: 5
+    }, {
+        name: "Cammy",
+        portrait: "http://i.imgur.com/Lq1H0mc.gif",
+        idleSprite: "http://i.imgur.com/NeWusXQ.gif",
+        description: null,
+        price: "500",
+        strength: 5,
+        intelligence: 7,
+        speed: 8,
+        luck: 6
+    }, {
+        name: "Spiderman",
+        portrait: "http://i.imgur.com/fL105m0.png",
+        idleSprite: "http://i.imgur.com/Lb7LhFZ.gif",
+        description: null,
+        price: "2000",
+        strength: 7,
+        intelligence: 9,
+        speed: 9,
+        luck: 2
+    }, {
+        name: "Makoto",
+        portrait: "http://i.imgur.com/RjjRSeR.gif",
+        idleSprite: "http://i.imgur.com/G7XWyDz.gif",
+        description: null,
+        price: "600",
+        strength: 5,
+        intelligence: 6,
+        speed: 8,
+        luck: 5
+    }, {
+        name: "Rachel Alucard",
+        portrait: "http://i.imgur.com/93s9ZAF.png",
+        idleSprite: "http://i.imgur.com/5iGEL3b.gif",
+        description: null,
+        price: "600",
+        strength: 5,
+        intelligence: 6,
+        speed: 8,
+        luck: 5
+    }, {
+        name: "Sentinel",
+        portrait: "http://i.imgur.com/Aw9u1h5.png",
+        idleSprite: "http://i.imgur.com/wf5fK6B.gif",
+        description: null,
+        price: "600",
+        strength: 5,
+        intelligence: 6,
+        speed: 8,
+        luck: 5
     }],
     category: [{
         type: 'Game',
@@ -156,146 +216,357 @@ var data = {
         last_name: 'Mcuserson'
     }],
 };
+
 function rand(min, max) {
-  min = Math.ceil(min);
-  max = Math.floor(max);
-  return Math.floor(Math.random() * (max - min + 1)) + min;
+    min = Math.ceil(min);
+    max = Math.floor(max);
+    return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-var seedReviews = function(){
-  var rows = [{
-          rating: 5,
-          description: 'LUV DAT RYU',
-          userId: 1,
-          characterId: 1
-      }, {
-          rating: 1,
-          description: 'YUCKY',
-          userId: 1,
-          characterId: 1
-      }]
-      return Promise.all(rows.map(function (userObj) {
-          return Review.create(userObj);
-      }));
+var seedReviews = function() {
+    var rows = [{
+        rating: 5,
+        description: 'LUV DAT RYU',
+        userId: 1,
+        characterId: 1
+    }, {
+        rating: 1,
+        description: 'YUCKY',
+        userId: 1,
+        characterId: 1
+    }]
+    return Promise.all(rows.map(function(userObj) {
+        return Review.create(userObj);
+    }));
 }
-var seedCharacterCategory = function(){
-  var rows = [{
-      characterId: 1,
-      categoryId: 1
-  }, {
-      characterId: 1,
-      categoryId: 2
-  }, {
-      characterId: 1,
-      categoryId: 3
-  }, {
-      characterId: 1,
-      categoryId: 4
-  }, {
-      characterId: 1,
-      categoryId: 5
-  }, {
-      characterId: 1,
-      categoryId: 6
-  }, {
-      characterId: 1,
-      categoryId: 7
-  }, {
-      characterId: 1,
-      categoryId: 10
-  }, {
-      characterId: 2,
-      categoryId: 2
-  }, {
-      characterId: 2,
-      categoryId: 3
-  }, {
-      characterId: 2,
-      categoryId: 4
-  }, {
-      characterId: 2,
-      categoryId: 5
-  }, {
-      characterId: 2,
-      categoryId: 6
-  }, {
-      characterId: 2,
-      categoryId: 1
-  }, {
-      characterId: 2,
-      categoryId: 11
-  }, {
-      characterId: 3,
-      categoryId: 1
-  }, {
-      characterId: 3,
-      categoryId: 2
-  }, {
-      characterId: 3,
-      categoryId: 3
-  }, {
-      characterId: 3,
-      categoryId: 4
-  }, {
-      characterId: 3,
-      categoryId: 5
-  }, {
-      characterId: 3,
-      categoryId: 6
-  }, {
-      characterId: 3,
-      categoryId: 8
-  }, {
-      characterId: 3,
-      categoryId: 10
-  }]
-  return Promise.all(rows.map(function (userObj) {
-      return db.model('CharacterCategory').create(userObj);
-  }));
+var seedCharacterCategory = function() {
+    var rows = [{
+        characterId: 1,
+        categoryId: 1
+    }, {
+        characterId: 1,
+        categoryId: 2
+    }, {
+        characterId: 1,
+        categoryId: 3
+    }, {
+        characterId: 1,
+        categoryId: 4
+    }, {
+        characterId: 1,
+        categoryId: 5
+    }, {
+        characterId: 1,
+        categoryId: 6
+    }, {
+        characterId: 1,
+        categoryId: 7
+    }, {
+        characterId: 1,
+        categoryId: 10
+    }, {
+        characterId: 2,
+        categoryId: 2
+    }, {
+        characterId: 2,
+        categoryId: 3
+    }, {
+        characterId: 2,
+        categoryId: 4
+    }, {
+        characterId: 2,
+        categoryId: 5
+    }, {
+        characterId: 2,
+        categoryId: 6
+    }, {
+        characterId: 2,
+        categoryId: 1
+    }, {
+        characterId: 2,
+        categoryId: 11
+    }, {
+        characterId: 3,
+        categoryId: 1
+    }, {
+        characterId: 3,
+        categoryId: 2
+    }, {
+        characterId: 3,
+        categoryId: 3
+    }, {
+        characterId: 3,
+        categoryId: 4
+    }, {
+        characterId: 3,
+        categoryId: 5
+    }, {
+        characterId: 3,
+        categoryId: 6
+    }, {
+        characterId: 11,
+        categoryId: 11
+    }, {
+        characterId: 12,
+        categoryId: 11
+    }, {
+        characterId: 14,
+        categoryId: 11
+    }, {
+        characterId: 15,
+        categoryId: 11
+    }, {
+        characterId: 13,
+        categoryId: 10
+    }, {
+        characterId: 3,
+        categoryId: 10
+    }, {
+        characterId: 4,
+        categoryId: 10
+    }, {
+        characterId: 5,
+        categoryId: 10
+    }, {
+        characterId: 6,
+        categoryId: 10
+    }, {
+        characterId: 7,
+        categoryId: 10
+    }, {
+        characterId: 8,
+        categoryId: 10
+    }, {
+        characterId: 9,
+        categoryId: 10
+    }, {
+        characterId: 10,
+        categoryId: 10
+    }, {
+        characterId: 4,
+        categoryId: 8
+    }, {
+        characterId: 6,
+        categoryId: 7
+    }, {
+        characterId: 5,
+        categoryId: 8
+    }, {
+        characterId: 7,
+        categoryId: 8
+    }, {
+        characterId: 8,
+        categoryId: 9
+    }, {
+        characterId: 9,
+        categoryId: 8
+    }, {
+        characterId: 10,
+        categoryId: 9
+    }, {
+        characterId: 11,
+        categoryId: 9
+    }, {
+        characterId: 12,
+        categoryId: 9
+    }, {
+        characterId: 13,
+        categoryId: 7
+    }, {
+        characterId: 14,
+        categoryId: 7
+    }, {
+        characterId: 15,
+        categoryId: 8
+    }, {
+        characterId: 16,
+        categoryId: 8
+    }, {
+        characterId: 4,
+        categoryId: 1
+    }, {
+        characterId: 4,
+        categoryId: 3
+    }, {
+        characterId: 5,
+        categoryId: 1
+    }, {
+        characterId: 5,
+        categoryId: 2
+    }, {
+        characterId: 5,
+        categoryId: 3
+    }, {
+        characterId: 5,
+        categoryId: 4
+    }, {
+        characterId: 6,
+        categoryId: 1
+    }, {
+        characterId: 6,
+        categoryId: 3
+    }, {
+        characterId: 7,
+        categoryId: 1
+    }, {
+        characterId: 7,
+        categoryId: 2
+    }, {
+        characterId: 7,
+        categoryId: 3
+    }, {
+        characterId: 7,
+        categoryId: 4
+    }, {
+        characterId: 8,
+        categoryId: 1
+    }, {
+        characterId: 8,
+        categoryId: 3
+    }, {
+        characterId: 9,
+        categoryId: 1
+    }, {
+        characterId: 9,
+        categoryId: 2
+    }, {
+        characterId: 9,
+        categoryId: 3
+    }, {
+        characterId: 9,
+        categoryId: 4
+    }, {
+        characterId: 10,
+        categoryId: 1
+    }, {
+        characterId: 10,
+        categoryId: 2
+    }, {
+        characterId: 10,
+        categoryId: 3
+    }, {
+        characterId: 10,
+        categoryId: 4
+    }, {
+        characterId: 11,
+        categoryId: 2
+    }, {
+        characterId: 11,
+        categoryId: 4
+    }, {
+        characterId: 12,
+        categoryId: 1
+    }, {
+        characterId: 12,
+        categoryId: 2
+    }, {
+        characterId: 12,
+        categoryId: 3
+    }, {
+        characterId: 12,
+        categoryId: 4
+    }, {
+        characterId: 13,
+        categoryId: 5
+    }, {
+        characterId: 13,
+        categoryId: 6
+    }, {
+        characterId: 14,
+        categoryId: 2
+    }, {
+        characterId: 14,
+        categoryId: 3
+    }, {
+        characterId: 16,
+        categoryId: 2
+    }, {
+        characterId: 16,
+        categoryId: 3
+    }, {
+        characterId: 2,
+        categoryId: 7
+    }]
+    return Promise.all(rows.map(function(userObj) {
+        return db.model('CharacterCategory').create(userObj);
+    }));
 };
 
-var seedCharacterOrders = function () {
-    var rows = [
-      {characterId: 1, orderId: 1},
-      {characterId: 2, orderId: 1},
-      {characterId: 3, orderId: 1},
-      {characterId: 4, orderId: 1},
-      {characterId: 5, orderId: 2},
-      {characterId: 6, orderId: 2},
-      {characterId: 7, orderId: 2},
-      {characterId: 8, orderId: 2},
-    ];
-    return Promise.all(rows.map(function (userObj) {
+var seedCharacterOrders = function() {
+    var rows = [{
+        characterId: 1,
+        orderId: 1
+    }, {
+        characterId: 2,
+        orderId: 1
+    }, {
+        characterId: 3,
+        orderId: 1
+    }, {
+        characterId: 4,
+        orderId: 1
+    }, {
+        characterId: 5,
+        orderId: 2
+    }, {
+        characterId: 6,
+        orderId: 2
+    }, {
+        characterId: 7,
+        orderId: 2
+    }, {
+        characterId: 8,
+        orderId: 2
+    }, ];
+    return Promise.all(rows.map(function(userObj) {
         return db.model('CharacterOrder').create(userObj);
     }));
 
 };
 
-var seedOrders = function () {
+var seedOrders = function() {
 
-    var rows = [
-      { status: 'delivered', userId: '2'},
-      { status: 'approved', userId: '2'},
-      { status: 'pending', userId: '2'},
-      { status: 'delivered', userId: '2'},
-      { status: 'delivered', userId: '2'}
-    ];
-    return Promise.all(rows.map(function (userObj) {
+    var rows = [{
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'approved',
+        userId: '2'
+    }, {
+        status: 'pending',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }];
+    return Promise.all(rows.map(function(userObj) {
         return Order.create(userObj);
     }));
 
 };
-var seedOrders = function () {
+var seedOrders = function() {
 
-    var rows = [
-      { status: 'delivered', userId: '2'},
-      { status: 'approved', userId: '2'},
-      { status: 'pending', userId: '2'},
-      { status: 'delivered', userId: '2'},
-      { status: 'delivered', userId: '2'}
-    ];
+    var rows = [{
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'approved',
+        userId: '2'
+    }, {
+        status: 'pending',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }, {
+        status: 'delivered',
+        userId: '2'
+    }];
 
-    var creatingCharacterOrders = rows.map(function (userObj) {
+    var creatingCharacterOrders = rows.map(function(userObj) {
         return Order.create(userObj);
     });
 
@@ -315,8 +586,11 @@ db.sync({
         });
     })
 
-    .then(function(){
-      return Order.create({status: 'pending', userId: '2'});
+.then(function() {
+        return Order.create({
+            status: 'pending',
+            userId: '2'
+        });
     })
     .then(() => seedOrders())
     .then(() => seedReviews())

@@ -4,15 +4,14 @@ module.exports = router;
 
 var Order = require('../../../db/models/order.js');
 var Character = require('../../../db/models/character.js');
-
+var adminTest = require('../../configure/authorization').adminTest;
 
 // '/orders'
 
 router.get('/', function(req, res, next){
-
-    if (!req.user.isAdmin){
-      req.query = { userId: req.user.id}
-    }
+  if (!req.user.isAdmin){
+    req.query = { userId: req.user.id}
+  }
   Order.findAll({where: req.query, include: { model: Character }})
   .then(orders => res.send(orders))
   .catch(next);
@@ -47,8 +46,9 @@ router.delete('/:id', function(req, res, next){
   .then(() => res.status(200).send('Order deleted'))
   .catch(next);
 });
+
 router.get('/user/:userId', function(req, res, next){
-  Order.findAll({where: { userId: req.params.userId}})
+  Order.findAll({where: { userId: req.params.userId }, include: [Character], order: "id DESC" })
   .then(orders => res.send(orders))
   .catch(next);
 });
