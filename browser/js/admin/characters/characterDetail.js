@@ -9,6 +9,9 @@ app.config(function($stateProvider){
       },
       allCategories: function(CategoryFactory){
         return CategoryFactory.getAll().then(CategoryFactory.separate);
+      },
+      reviews: function(characterFactory, $stateParams){
+        return characterFactory.getRevsById($stateParams.id)
       }
     }
   });
@@ -18,11 +21,13 @@ app.config(function($stateProvider){
   })
 })
 
-app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFactory, allCategories, CategoryFactory, character){
+app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFactory, reviews, allCategories, CategoryFactory, character){
   $scope.character = character;
+  $scope.reviews = reviews;
   $scope.character.newCategories = [];
   $scope.allCategories = allCategories;
   $scope.editCategories = $scope.character.categories;
+
   $scope.character.categories = CategoryFactory.organize($scope.character.categories);
   console.log('allCats',allCategories);
   console.log('charCats',$scope.character.categories)

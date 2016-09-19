@@ -17,8 +17,15 @@
         <p>Intelligence: {{character.intelligence}}</p>
         <p>Speed: {{character.speed}}</p>
         <p>Luck: {{character.luck}}</p>
+        <h5>Categories</h5>
         <div ng-repeat="category in character.categories">
           <p>{{category.title}}: {{category.values.join(', ')}}</p>
+        </div>
+        <h5>Reviews</h5>
+        <div ng-repeat="review in reviews">
+          <button class="btn btn-danger glyphicon glyphicon-remove" ng-click="removeReview(review)"></button>
+          <p>Rating: {{review.rating}}</p>
+          <p>"{{review.description}}" - {{review.user.first_name + " " + review.user.last_name}}</p>
         </div>
         <h3>{{error}}</h3>
 
