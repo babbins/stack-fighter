@@ -3,7 +3,7 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
   if (!$sessionStorage.cart) $sessionStorage.cart = [];
   $scope.$storage.cart = $sessionStorage.cart
   $scope.$storage.total = $sessionStorage.total
-  $sessionStorage.total = 0
+  if (!$sessionStorage.total) $sessionStorage.total = 0
   $scope.categories = categories;
 
   $scope.activeFilter = [];
