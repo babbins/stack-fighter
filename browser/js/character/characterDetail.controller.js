@@ -44,13 +44,24 @@ app.controller('CharacterDetailCtrl', function($scope, character, reviews, chara
        })
    }
    $scope.addToCart = function(quantity, cartCharacter) {
+     console.log(quantity);
+     if(quantity === undefined){
+         alert("Must add at least one.");
+         return;
+     }
      quantity = Number(quantity)
-    //  console.log("character: ", character);
+
+     var charIdx;
+
+    console.log($localStorage.cart);
+    console.log("character: ", character);
      for (var j = 0; j < $localStorage.cart.length; j++) {
+         console.log(j);
          var char = $localStorage.cart[j];
-         if (char.name === cartCharacter.name) {
-             var charIdx = j
-             break
+         if (char.name == cartCharacter.name) {
+             charIdx = j;
+             console.log('found match', charIdx);
+             break;
          }
      }
 
@@ -58,7 +69,7 @@ app.controller('CharacterDetailCtrl', function($scope, character, reviews, chara
     //  console.log("LOCAL STORAGE CART: ", $localStorage.cart);
     //  console.log("typeof LOCAL STORAGE CART: ", (Array.isArray($localStorage.cart)));
 
-     if (!charIdx) {
+     if (charIdx===undefined) {
        cartCharacter.quantity = quantity
        $localStorage.cart.push(cartCharacter)
      } else {
