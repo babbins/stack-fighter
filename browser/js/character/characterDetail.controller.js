@@ -45,7 +45,13 @@ app.controller('CharacterDetailCtrl', function($scope, character, reviews, chara
    }
    $scope.addToCart = function(quantity, character) {
      quantity = Number(quantity)
+     console.log("character: ", character);
      var charIdx = $localStorage.cart.indexOf(character)
+
+     console.log("Char index: ", charIdx);
+     console.log("LOCAL STORAGE CART: ", $localStorage.cart);
+     console.log("typeof LOCAL STORAGE CART: ", (Array.isArray($localStorage.cart)));
+
      if (charIdx === -1) {
        character.quantity = quantity
        $localStorage.cart.push(character)
