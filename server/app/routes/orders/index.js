@@ -4,13 +4,10 @@ module.exports = router;
 
 var Order = require('../../../db/models/order.js');
 var Character = require('../../../db/models/character.js');
-<<<<<<< HEAD
 var purchasedCharacter = require('../../../db/models/purchased-character.js');
 
 var adminTest = require('../../configure/authorization').adminTest;
-=======
 //var adminTest = require('../../configure/authorization').adminTest;
->>>>>>> master
 
 // '/orders'
 
