@@ -95,6 +95,6 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
     checkoutFactory.clearChar(character)
   }
   $scope.addFilters = function() {
-    console.log("Adding these filters! : ", $scope.activeFilter);
+    console.log('Adding these filters! : ', $scope.activeFilter);
   }
 });

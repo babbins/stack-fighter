@@ -15,9 +15,9 @@ app.controller('AdminAddCharacterCtrl', function($scope, $state, characterFactor
   $scope.categories = categories;
 
   $scope.createCharacter = function(character){
-    if(character.categories){
+    if (character.categories){
       var categoryIds = [];
-      for(var key in character.categories){
+      for (var key in character.categories){
         categoryIds.push(+character.categories[key]);
       }
       character.categories = categoryIds;
