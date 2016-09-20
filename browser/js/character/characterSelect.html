@@ -1,5 +1,5 @@
-<div class="row">
-    <div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 well well-lg" >
+
+<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 well well-lg" >
       <h1>Cart</h1>
       <div ng-repeat="character in $storage.cart">
         <h3>{{character.name}}: {{character.quantity}}</h3>
@@ -17,14 +17,13 @@
           <span class="glyphicon glyphicon-shopping-cart"></span> Shopping Cart
       </button>
 </div>
-</div>
 <div class="col-xs-10">
+  <div class='jumbotron'>
   <div class="container" id="characterSelected">
 
-    <div class='jumbotron'>
+    
       <h1 class="SelectTitle">Select Your Character!</h1>
       <br>
-      <div class="row">
         <div class="col-xs-4 col-xs-offset-4">
           <h4>{{selectedCharacter.name}}</h4>
           <h6>Price: ${{selectedCharacter.price}} </h6>
@@ -41,9 +40,8 @@
             </ul>
           </div>
         </div>
-      </div>
       <br>
-      <div class="row row-centered col-xs-offset-1" id="catbar">
+      <div class="row row-centered col-xs-offset-1 col-xs-10 col-xs-offset-1" id="catbar">
         <div class='col-xs-3' ng-repeat='category in sortedCategories'>
           <select data-toggle="select" class="form-control select select-inverse mrs mbm" ng-model='selected' ng-change="addFilter(selected)">
         <option value=''>{{category[0]}}</option>
@@ -54,8 +52,9 @@
           <button ng-click="clearFilter()" type="button" class="btn btn-danger" id="clearFilters">Clear Filter(s)</button>
         </div>
       </div>
+    
     </div>
-    <div class="row">
+    </div>
       <div class="col-xs-12">
         <div class="charSelect row" ng-repeat="character in characters">
           <div ng-class='{active: !character.inactive, inactive : character.inactive}' ng-mouseover='character.inactive || selectCharacter(character)' ng-click="character.inactive || go('characterDetail', { id : character.id })">
@@ -77,6 +76,5 @@
           </div>
         </div>
       </div>
-    </div>
   </div>
 </div>
