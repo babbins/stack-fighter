@@ -1,4 +1,5 @@
 app.factory('characterFactory', function($http){
+  // KHWA: We should have the res => res.data function as a util
   var charObj = {};
   charObj.getAll = function() {
     return $http.get('/api/characters').then(res => res.data);

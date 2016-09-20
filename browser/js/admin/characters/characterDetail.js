@@ -8,6 +8,7 @@ app.config(function($stateProvider){
         return characterFactory.getById($stateParams.id);
       },
       allCategories: function(CategoryFactory){
+        // KHWA: What does .separate do?
         return CategoryFactory.getAll().then(CategoryFactory.separate);
       }
     }
@@ -22,10 +23,13 @@ app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFac
   $scope.character = character;
   $scope.character.newCategories = [];
   $scope.allCategories = allCategories;
+  // KHWA: Consider angular.copy to avoid direct reference?
   $scope.editCategories = $scope.character.categories;
   $scope.character.categories = CategoryFactory.organize($scope.character.categories);
+  // KHWA: We should avoid console logs in master
   console.log('allCats', allCategories);
   console.log('charCats', $scope.character.categories)
+  // KHWA: We should use $state.reload OR just update the categories in the .then
   $scope.removeCharacter = function(){
     return characterFactory.removeChar(character.id).then(() => $state.go('adminCharacters'));
   }
@@ -51,14 +55,18 @@ app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFac
   $scope.updateCharacter = function(charToUpdate){
     delete charToUpdate.categories;
     $scope.editCategories = $scope.editCategories.map(category => category.id);
+    // KHWA: We should avoid console logs in master
     console.log($scope.editCategories);
     charToUpdate.price = +charToUpdate.price;
+    // KHWA: We should avoid console logs in master
     console.log(charToUpdate);
     var data = [charToUpdate, $scope.editCategories];
     characterFactory.updateChar(character.id, data)
     .then(updatedChar => {
+      // KHWA: $state.reload() or $scope.$evalAsync()?
       $state.go('adminCharacterDetail', {id: updatedChar.id}, {reload: true});
     })
+    // KHWA: We probably a growl or an alert here
     .catch(console.error.bind(console));
   };
 });

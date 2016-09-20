@@ -1,3 +1,4 @@
+// KHWA: Maybe consider having the res => res.data as a utility function
 app.factory('UserFactory', function($http){
     return {
         getAll: function(){

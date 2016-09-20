@@ -1,6 +1,7 @@
 'use strict';
 var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
+// KHWA: Don't forget to have some type of authentication for some of these routes!
 
 var Order = require('../../../db/models/order.js');
 var Character = require('../../../db/models/character.js');

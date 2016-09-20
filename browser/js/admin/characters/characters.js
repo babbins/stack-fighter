@@ -13,6 +13,7 @@ app.config(function($stateProvider){
 })
 
 app.controller('AdminCharactersCtrl', function($scope, characterFactory, characters){
+  // KHWA: We should remove logs from master
   console.log(characters);
   $scope.characters = characters;
 

@@ -5,6 +5,7 @@ app.factory('checkoutFactory', function($http, $state, $localStorage){
     .then(() => {
       $localStorage.cart = [];
       $localStorage.total = 0;
+      // KHWA: Maybe put this inside the controller and attach a .catch afterwards
       $state.go('myOrders');
     })
   }
@@ -12,6 +13,8 @@ app.factory('checkoutFactory', function($http, $state, $localStorage){
     $localStorage.cart = []
     $localStorage.total = 0
   }
+  // KHWA: Perhaps we can centralize this logic or reuse it?
+  // addToCart also has something similar
   checkoutObj.changeQuantity = function(character, change) {
     change = Number(change)
     var charIdx = $localStorage.cart.indexOf(character)
