@@ -1,6 +1,10 @@
 app.controller('CheckoutCtrl', function($scope, $localStorage, checkoutFactory){
   $scope.$storage = $localStorage
   $scope.placeOrder = function(characters) {
+    if(!characters.length){
+      alert("Must have item(s) in the cart.");
+      return;
+    }
     var characterIds = [];
     console.log("CHARACTERS FROM CHECKOUT CTRL", characters);
     for (var index = 0; index < characters.length; index++) {
