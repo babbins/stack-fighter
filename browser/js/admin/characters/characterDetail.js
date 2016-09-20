@@ -24,8 +24,8 @@ app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFac
   $scope.allCategories = allCategories;
   $scope.editCategories = $scope.character.categories;
   $scope.character.categories = CategoryFactory.organize($scope.character.categories);
-  console.log('allCats',allCategories);
-  console.log('charCats',$scope.character.categories)
+  console.log('allCats', allCategories);
+  console.log('charCats', $scope.character.categories)
   $scope.removeCharacter = function(){
     return characterFactory.removeChar(character.id).then(() => $state.go('adminCharacters'));
   }
@@ -34,11 +34,11 @@ app.controller('AdminCharacterDetailCtrl', function($scope, $state, characterFac
   }
 
   $scope.addCategories = function(){
-    $scope.character.newCategories = $scope.character.newCategories.map(n => +n).filter(n => n!==0);
+    $scope.character.newCategories = $scope.character.newCategories.map( n => +n ).filter( n => n !== 0);
     $scope.character.newCategories.forEach(function(newId){
       $scope.allCategories.forEach(function(type){
         type.forEach(function(category){
-          if(category.id){
+          if (category.id){
             if (category.id === newId && !$scope.editCategories.includes(category)){
               $scope.editCategories.push(category);
             }

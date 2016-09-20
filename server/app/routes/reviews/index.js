@@ -3,7 +3,7 @@ var router = require('express').Router(); // eslint-disable-line new-cap
 module.exports = router;
 var Review = require('../../../db/models/review')
 var User = require('../../../db/models/user')
-var adminTest = require('../../configure/authorization').adminTest;
+//var adminTest = require('../../configure/authorization').adminTest;
 
 router.post('/', function(req, res, next){
   var newReview = {

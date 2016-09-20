@@ -4,9 +4,13 @@ module.exports = router;
 
 var Order = require('../../../db/models/order.js');
 var Character = require('../../../db/models/character.js');
+<<<<<<< HEAD
 var purchasedCharacter = require('../../../db/models/purchased-character.js');
 
 var adminTest = require('../../configure/authorization').adminTest;
+=======
+//var adminTest = require('../../configure/authorization').adminTest;
+>>>>>>> master
 
 // '/orders'
 
@@ -58,7 +62,7 @@ router.delete('/:id', function(req, res, next){
 });
 
 router.get('/user/:userId', function(req, res, next){
-  Order.findAll({where: { userId: req.params.userId }, include: [Character], order: "id DESC" })
+  Order.findAll({where: { userId: req.params.userId }, include: [Character], order: 'id DESC' })
   .then(orders => res.send(orders))
   .catch(next);
 });

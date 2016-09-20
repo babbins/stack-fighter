@@ -5,15 +5,15 @@ app.factory('UserFactory', function($http){
             .then(res => res.data);
         },
         deleteUser: function(id){
-            return $http.delete('/api/users/'+id)
+            return $http.delete('/api/users/' + id)
             .then(res => res.data);
         },
         toggleAdmin: function(user){
-            return $http.put('/api/users/'+user.id, {isAdmin: !user.isAdmin})
+            return $http.put('/api/users/' + user.id, {isAdmin: !user.isAdmin})
             .then(res => res.data);
         },
         resetPassword: function(user){
-            return $http.put('/api/users/'+user.id, {passwordReset: !user.passwordReset})
+            return $http.put('/api/users/' + user.id, {passwordReset: !user.passwordReset})
             .then(res => res.data);
         }
     };
