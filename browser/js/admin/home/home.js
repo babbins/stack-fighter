@@ -6,3 +6,7 @@ app.config(function($stateProvider){
 
   });
 });
+
+app.controller('AdminHomeCtrl', function($scope){
+
+});
