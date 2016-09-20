@@ -1,4 +1,4 @@
-app.controller('CharacterDetailCtrl', function($scope, character, reviews, characterFactory, $stateParams){
+app.controller('CharacterDetailCtrl', function($scope, character, reviews, characterFactory, $state, $localStorage){
   $scope.character = character;
   var separateTypes = function(array){
        var sortedArr = [];
@@ -43,4 +43,28 @@ app.controller('CharacterDetailCtrl', function($scope, character, reviews, chara
            $scope.error = err
        })
    }
+   $scope.addToCart = function(quantity, cartCharacter) {
+     quantity = Number(quantity)
+    //  console.log("character: ", character);
+     for (var j = 0; j < $localStorage.cart.length; j++) {
+         var char = $localStorage.cart[j];
+         if (char.name === cartCharacter.name) {
+             var charIdx = j
+             break
+         }
+     }
+
+    //  console.log("Char index: ", charIdx);
+    //  console.log("LOCAL STORAGE CART: ", $localStorage.cart);
+    //  console.log("typeof LOCAL STORAGE CART: ", (Array.isArray($localStorage.cart)));
+
+     if (!charIdx) {
+       cartCharacter.quantity = quantity
+       $localStorage.cart.push(cartCharacter)
+     } else {
+       $localStorage.cart[charIdx].quantity += quantity
+     }
+     $localStorage.total += Number(cartCharacter.price) * quantity
+     $state.go('characterSelect');
+   };
 })

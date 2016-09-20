@@ -4,6 +4,9 @@ module.exports = router;
 
 var Order = require('../../../db/models/order.js');
 var Character = require('../../../db/models/character.js');
+var purchasedCharacter = require('../../../db/models/purchased-character.js');
+
+var adminTest = require('../../configure/authorization').adminTest;
 //var adminTest = require('../../configure/authorization').adminTest;
 
 // '/orders'
@@ -19,9 +22,17 @@ router.get('/', function(req, res, next){
 
 router.post('/', function(req, res, next){
   Order.create({ status: 'pending'})
-  .then(order => order.setUser(req.user.id))
-  .then(order => order.setCharacters(req.body.characters))
-  .then(() => res.end())
+  .then(currentOrder => {
+    currentOrder.setUser(req.user.id) // handle for null
+    var pcharacter = [];
+    req.body.characters.forEach(function(character){
+        currentOrder.setCharacters(character.id);
+        delete character.id;
+        pcharacter.push(purchasedCharacter.create(character));
+    })
+    return Promise.all(pcharacter);
+  })
+  .then(() => res.send())
   .catch(next);
 });
 
