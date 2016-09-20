@@ -12,6 +12,3 @@ app.config(function ($stateProvider) {
         }
     });
 });
-
-
-

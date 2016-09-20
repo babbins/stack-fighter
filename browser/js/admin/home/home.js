@@ -4,8 +4,5 @@ app.config(function($stateProvider){
     templateUrl: 'js/admin/home/home.html',
     controller: 'AdminHomeCtrl'
 
-  })
-})
-
-app.controller('AdminHomeCtrl', function($scope){
+  });
 });

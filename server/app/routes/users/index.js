@@ -14,7 +14,7 @@ router.get('/', function(req, res, next){
 });
 
 router.get('/?', function(req, res, next) {
-    if(req.query.user) {
+    if (req.query.user) {
         User.findAll({
             where: {
                 id: req.query.user
@@ -42,7 +42,7 @@ router.put('/:id', function(req, res, next){
 
 
 router.delete('/:id', function(req, res, next){
-    if(!req.user.isAdmin){
+    if (!req.user.isAdmin){
         res.sendStatus(401);
     }
     User.findById(req.params.id)

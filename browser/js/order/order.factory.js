@@ -4,7 +4,7 @@ app.factory('OrderFactory', function($http){
         return $http.get('/api/orders').then(res => res.data);
     },
     getOneUserOrders: function(id){
-        return $http.get('/api/orders/user/'+id).then(res => res.data);
+        return $http.get('/api/orders/user/' + id).then(res => res.data);
     },
     deleteOrder: function(id){
         return $http.delete('/api/orders/' + id).then( res => res.data);

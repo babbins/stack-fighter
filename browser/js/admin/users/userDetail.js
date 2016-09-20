@@ -4,7 +4,7 @@ app.config(function($stateProvider){
         templateUrl: 'js/admin/users/manageUsers.html',
         controller: 'AdminUsersCtrl',
         resolve: {
-            user : function(UserFactory){
+            user: function(UserFactory){
                 return UserFactory.getAll();
             }
         }
