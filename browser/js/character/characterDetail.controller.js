@@ -1,5 +1,15 @@
 app.controller('CharacterDetailCtrl', function($scope, character, reviews, characterFactory, $state, $localStorage){
   $scope.character = character;
+  $scope.quantity = {
+    availableOptions: [
+      {value: 1},
+      {value: 2},
+      {value: 3},
+      {value: 4},
+      {value: 5}
+    ],
+    selectedOption: {value: 1}
+  };
   var separateTypes = function(array){
        var sortedArr = [];
        var arrKey = [];

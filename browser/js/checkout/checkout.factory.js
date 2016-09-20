@@ -1,10 +1,8 @@
 app.factory('checkoutFactory', function($http, $state, $localStorage){
   var checkoutObj = {};
   checkoutObj.placeOrder = function(orderData) {
-    $http.post('api/orders', orderData)
-    .then(() => {
-        return $http.post('api/orders', orderData)
-    })
+    $http.post('api/purchased-characters', orderData)
+    .then(() => { $http.post('api/orders', orderData) })
     .then(() => {
         $localStorage.cart = [];
         $localStorage.total = 0;

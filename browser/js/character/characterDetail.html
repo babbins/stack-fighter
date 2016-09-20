@@ -15,12 +15,7 @@
         <div ng-repeat="category in categories">
           <p>{{category.title}}: {{category.values.join(', ')}}</p>
         </div>
-        <select class="selectpicker show-tick btn-default" ng-model="quantity" >
-         <option value=1>1</option>
-         <option value=2>2</option>
-         <option value=3>3</option>
-         <option value=4>4</option>
-         <option value=5>5</option>
+        <select class="selectpicker show-tick btn-default" ng-options="option.value for option in quantity.availableOptions track by option.value" ng-model="quantity.selectedOption" >
        </select>
      <button ng-click="addToCart(quantity,character)" type="button" class="btn btn-success" id="addToCart">Add To Cart</button>
         <h5>Reviews</h5>

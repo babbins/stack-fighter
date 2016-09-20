@@ -4,7 +4,7 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/order/myOrders.html',
         resolve: {
           orders: function(OrderFactory){
-            return OrderFactory.getUserOrders();
+            return OrderFactory.getU2serOrders();
           }
         },
         controller: function($scope, orders){
