@@ -18,13 +18,25 @@ router.get('/:id', function(req, res, next){
 })
 
 router.post('/', function(req, res, next){
-    req.body.forEach(function(character){
-        var newPurchasedCharacter = character;
-        delete newPurchasedCharacter.createdAt;
-        delete newPurchasedCharacter.updatedAt;
-        purchasedCharacter.findOrCreate(character)
-    })
-  .then(createdCharacter => res.send(createdCharacter))
+  var purchasedCharPromises = [];
+  req.body.characters.forEach(function(character){
+    var promise = purchasedCharacter.findOrCreate({where: {
+      name: character.name,
+      portrait: character.portrait,
+      idleSprite: character.idleSprite,
+      description: character.description,
+      strength: character.strength,
+      intelligence: character.intelligence,
+      speed: character.speed,
+      luck: character.luck,
+      quantity: character.quantity,
+      price: character.price
+    }});
+    purchasedCharPromises.push(promise);
+  })
+
+  Promise.all(purchasedCharPromises)
+  .then(createdCharacters => res.send(createdCharacters))
   .catch(next)
 })
 

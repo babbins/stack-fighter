@@ -15,23 +15,20 @@ router.get('/', function(req, res, next){
   if (!req.user.isAdmin){
     req.query = { userId: req.user.id}
   }
-  Order.findAll({where: req.query, include: { model: Character }})
+  Order.findAll({where: req.query, include: { model: purchasedCharacter }})
   .then(orders => res.send(orders))
   .catch(next);
 });
 
 router.post('/', function(req, res, next){
+  var currentOrder;
+  var purchasedCharIds = req.body.map(char => char.id);
   Order.create({ status: 'pending'})
-  .then(currentOrder => {
-    currentOrder.setUser(req.user.id) // handle for null
-    var pcharacter = [];
-    req.body.characters.forEach(function(character){
-        currentOrder.setCharacters(character.id);
-        delete character.id;
-        pcharacter.push(purchasedCharacter.create(character));
-    })
-    return Promise.all(pcharacter);
+  .then(order => {
+    currentOrder = order;
+    return currentOrder.setUser(req.user.id)
   })
+  .then(() => currentOrder.setPurchasedCharacters(purchasedCharIds))
   .then(() => res.send())
   .catch(next);
 });

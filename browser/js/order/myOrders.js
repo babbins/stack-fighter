@@ -4,11 +4,14 @@ app.config(function ($stateProvider) {
         templateUrl: 'js/order/myOrders.html',
         resolve: {
           orders: function(OrderFactory){
-            return OrderFactory.getU2serOrders();
+            return OrderFactory.getUserOrders();
           }
         },
         controller: function($scope, orders){
           $scope.orders = orders;
+          // $scope.orders.forEach(order => {
+          //   order.createdAt = new Date(date)
+          // });
         }
     });
 });

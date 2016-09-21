@@ -1,13 +1,16 @@
 
-<div class="col-xs-2 col-sm-2 col-md-2 col-lg-2 well well-lg" >
+<div class="col-xs-2 well well-lg" >
       <h1>Cart</h1>
       <div ng-repeat="character in $storage.cart">
-        <h3>{{character.name}}: {{character.quantity}}</h3>
-
-        <button type="button" class="btn btn-default glyphicon glyphicon-plus" ng-click="changeQuantity(character, 1)"></button>
-        <button type="button" class="btn btn-default glyphicon glyphicon-minus" ng-click="changeQuantity(character, -1)"></button>
-        <button type="button" class="btn btn-default glyphicon glyphicon-remove" ng-click="clearChar(character)"></button>
-
+        <h3>{{character.name}} x{{character.quantity}}</h3>
+        <div class="col-xs-6">
+          <img src="{{character.idleSprite}}" alt="">
+        </div>
+        <div class="col-xs-6">
+          <button type="button" class="btn btn-default glyphicon glyphicon-plus" ng-click="changeQuantity(character, 1)"></button>
+          <button type="button" class="btn btn-default glyphicon glyphicon-minus" ng-click="changeQuantity(character, -1)"></button>
+          <button type="button" class="btn btn-default glyphicon glyphicon-remove" ng-click="clearChar(character)"></button>
+        </div>
       </div>
       <h4>Total: ${{$storage.total}}</h4>
 
@@ -21,7 +24,7 @@
   <div class='jumbotron'>
   <div class="container" id="characterSelected">
 
-    
+
       <h2 class="SelectTitle">Select Your Character!</h2>
       <br>
         <div class="col-xs-4 col-xs-offset-4">
@@ -52,7 +55,7 @@
           <button ng-click="clearFilter()" type="button" class="btn btn-danger" id="clearFilters">Clear Filter(s)</button>
         </div>
       </div>
-    
+
     </div>
     </div>
       <div class="col-xs-12">
