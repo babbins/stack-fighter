@@ -1,13 +1,17 @@
 app.factory('checkoutFactory', function($http, $state, $localStorage){
   var checkoutObj = {};
   checkoutObj.placeOrder = function(orderData) {
-    $http.post('api/purchased-characters', orderData)
-    .then(() => { $http.post('api/orders', orderData) })
-    .then(() => {
-        $localStorage.cart = [];
-        $localStorage.total = 0;
-        $state.go('myOrders');
+    $http.post('api/purchased-characters/', orderData)
+    .then((findOrCreateArrays) => {
+      var purchasedChars = findOrCreateArrays.data.map(arr => arr[0]);
+      return $http.post('/api/orders/', purchasedChars)
     })
+    .then(() => {
+      $localStorage.cart = [];
+      $localStorage.total = 0;
+      $state.go('myOrders');
+    })
+
 };
 
   checkoutObj.clearCart = function() {

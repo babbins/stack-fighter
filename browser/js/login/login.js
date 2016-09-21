@@ -30,7 +30,7 @@ app.controller('LoginCtrl', function ($scope, AuthService, $state) {
         AuthService.login(loginInfo).then(function (userOrId) {
           console.log(userOrId);
           if (typeof userOrId === 'object'){
-            $state.go('home');
+            $state.go('character-select');
           }
           else {
             $state.go('resetPassword', {id: userOrId});
