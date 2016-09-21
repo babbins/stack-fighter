@@ -54,12 +54,13 @@ app.controller('CharacterDetailCtrl', function($scope, character, reviews, chara
        })
    }
    $scope.addToCart = function(quantity, cartCharacter) {
-     console.log(quantity);
+     $scope.quantity = quantity;
      if(quantity === undefined){
-         alert("Must add at least one.");
-         return;
+         $scope.quantity = 1;
      }
-     quantity = Number(quantity)
+
+
+     $scope.quantity = Number($scope.quantity)
 
      var charIdx;
 
@@ -80,12 +81,12 @@ app.controller('CharacterDetailCtrl', function($scope, character, reviews, chara
     //  console.log("typeof LOCAL STORAGE CART: ", (Array.isArray($localStorage.cart)));
 
      if (charIdx===undefined) {
-       cartCharacter.quantity = quantity
+       cartCharacter.quantity = $scope.quantity;
        $localStorage.cart.push(cartCharacter)
      } else {
-       $localStorage.cart[charIdx].quantity += quantity
+       $localStorage.cart[charIdx].quantity += $scope.quantity;
      }
-     $localStorage.total += Number(cartCharacter.price) * quantity
+     $localStorage.total += Number(cartCharacter.price) * $scope.quantity;
      $state.go('characterSelect');
    };
 })
