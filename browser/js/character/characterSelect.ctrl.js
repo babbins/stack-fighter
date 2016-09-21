@@ -49,7 +49,7 @@ app.controller('CharacterSelectCtrl', function($scope, characters, categories, c
       added = true;
     } else {
       for (var i = 0; i < $scope.activeFilter.length; i++) {
-        if ($scope.activeFilter[i].type === filter.type) {
+        if ($scope.activeFilter[i] === filter) {
           $scope.activeFilter.splice(i, 1);
           $scope.activeFilter.push(filter);
           added = true;
